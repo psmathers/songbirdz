@@ -13,7 +13,7 @@ class MatchCell extends React.Component {
 
   render() {
     return(
-      <li>
+      <li className="match-cell">
         <div className="player-container">
           <div className="playlist-owner">
             {this.props.data.name}
