@@ -25,7 +25,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-spotify'
-gem 'omniauth-facebook'
 
 gem 'react-rails'
 
