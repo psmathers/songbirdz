@@ -7,7 +7,8 @@ class OnboardingContainer extends React.Component {
     this.state = {
       stepsLeft: 3
     }
-    this.updateNumberOfStepsLeft = this.updateNumberOfStepsLeft.bind(this)
+    this.nextStep = this.nextStep.bind(this)
+    this.prevStep = this.prevStep.bind(this)
     this.switchOnboardingSteps = this.switchOnboardingSteps.bind(this)
     this.leftButtonRendering = this.leftButtonRendering.bind(this)
     this.rightButtonRendering = this.rightButtonRendering.bind(this)
@@ -17,21 +18,26 @@ class OnboardingContainer extends React.Component {
 
   }
 
-  updateNumberOfStepsLeft() {
+  nextStep() {
     this.setState({steps: this.state.stepsLeft -= 1})
     if (this.state.stepsLeft == 0) {
       // Redirect to the matches page
+      console.log("Done with onboarding, redirect to matches page")
     }
+  }
+
+  prevStep() {
+    this.setState({steps: this.state.stepsLeft += 1})
   }
 
   switchOnboardingSteps() {
     let onboardingStep
     if (this.state.stepsLeft == 3) {
-      onboardingStep = <PlaylistInfo nextStep={this.updateNumberOfStepsLeft}/>
+      onboardingStep = <PlaylistInfo />
     } else if (this.state.stepsLeft == 2) {
-      onboardingStep = <AnthemInfo nextStep={this.updateNumberOfStepsLeft} />
+      onboardingStep = <AnthemInfo />
     } else if (this.state.stepsLeft == 1) {
-      onboardingStep = <Playlist nextStep={this.updateNumberOfStepsLeft} />
+      onboardingStep = <Playlist />
     }
     return onboardingStep
   }
@@ -41,7 +47,8 @@ class OnboardingContainer extends React.Component {
     if (this.state.stepsLeft == 3) {
       leftButton = null
     } else if (this.state.stepsLeft == 2 || this.state.stepsLeft == 1) {
-      leftButton = <Button prev />
+      leftButton = <Button prev
+                           updateStepCount={this.prevStep}/>
     }
     return leftButton
   }
@@ -49,16 +56,22 @@ class OnboardingContainer extends React.Component {
   rightButtonRendering() {
     let rightButton
     if (this.state.stepsLeft == 3 || this.state.stepsLeft == 2) {
-      leftButton = <Button next />
+      leftButton = <Button next
+                           updateStepCount={this.nextStep} />
     } else if (this.state.stepsLeft == 1) {
-      leftButton = <Button finish />
+      leftButton = <Button finish
+                           updateStepCount={this.nextStep}/>
     }
     return leftButton
   }
 
   render() {
-    {this.switchOnboardingSteps()}
-    {this.leftButtonRendering()}
-    {this.rightButtonRendering()}
+    return(
+      <div>
+        {this.switchOnboardingSteps()}
+        {this.leftButtonRendering()}
+        {this.rightButtonRendering()}
+      </div>
+    )
   }
 }

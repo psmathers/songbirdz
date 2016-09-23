@@ -10,7 +10,7 @@
 //   componentDidMount() {
 //
 //   }
-// 
+//
 //   renderLandingOrMatches() {
 //     let availableSpace;
 //     // if (this.state.current_user is already signed up with omniauth and has filled out the profile edit form and gone through onboarding) {
