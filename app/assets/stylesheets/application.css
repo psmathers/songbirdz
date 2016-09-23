@@ -13,3 +13,96 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  border: 1px dotted;
+  width: 70%;
+  margin: auto;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  /*border: 1px solid;*/
+  /*margin: 10px;*/
+  margin-right: 5px;
+  margin-left: 10px;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+input[type="submit"] {
+  width: 67%;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #cc99ff;
+  /*margin: auto;*/
+}
+
+.form-onboarding-container {
+  /*border: 1px dotted;*/
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+}
+
+.form-container {
+  /*border: 1px solid;*/
+  width: 100%;
+ /* margin: auto;*/
+  /*padding: 5px;*/
+}
+
+.form-container h3 {
+  /*border: 1px solid;*/
+  width: 65%;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px dotted;
+}
+
+.edit-form {
+  /*border: 1px dotted;*/
+  margin: 5px;
+  /*text-align: center*/
+}
+
+.form-input {
+  /*border: 1px dotted;*/
+  text-align: center;
+}
+
+.form-input textarea {
+  width: 65%;
+  height: 120px;
+  font-size: 20px;
+}
+
+.form-input select {
+  width: 67%;
+  height: 30px;
+  font-size: 20px;
+}
+
+.form-input option {
+  text-align: center;
+}
+
+.min-max {
+  width: 30%;
+  height: 30px;
+  font-size: 20px;
+}
+
+
+
+

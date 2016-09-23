@@ -27,35 +27,47 @@ class ProfileEditForm extends React.Component {
 
   render() {
     return(
-      <div>
-        <div className="profile-edit-form">
+      <div className="form-onboarding-container">
+        <div className="form-container">
           <h3>Create your profile</h3>
-          <form onSubmit={this.handleSubmit}>
-            <label for="age-range">Age Range</label>
-            <div className="age-range">
-            <label for="min-age">Min</label>
-            <input name="min-age" type="number" min="18" max="99" />
+          <form className="edit-form" onSubmit={this.handleSubmit}>
+            <div className="form-input">
+              <label for="age-range">Age Range:</label><br/>
+              <input className="min-max" name="min-age" type="number" min="18" max="99" placeholder="min" />
 
-            <span>to</span>
+              <span> to </span>
 
-            <label for="max-age">max</label>
-            <input name="max-age" type="number" min="19" max="100" />
+              <input className="min-max" name="max-age" type="number" min="19" max="100" placeholder="max" />
             </div>
 
-            <label for="gender">Gender</label>
-            <select name="gender">
-            {/* Determine all of the genders that we'll be adding here */}
-            <option value="each gender we want">Some gender</option>
-            </select>
+            <div className="form-input">
+              <label for="gender">Gender:</label><br/>
+              <select name="gender">
+              {/* Determine all of the genders that we'll be adding here */}
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              </select>
+            </div>
 
-            <legend>Preferences</legend>
-            {/* Determine all of the "looking fors" that we'll be adding here */}
-            <input type="checkbox" name="men" value="Men" />
+            <div className="form-input">
+              <label>Preferences: </label><br/>
+                            {/* Determine all of the "looking fors" that we'll be adding here */}
+              <input type="checkbox" id="c1" name="men" />
+              <label for="c1"><span></span>Men</label>
+              <input type="checkbox" id="c2" name="women" />
+              <label for="c2"><span></span>Women</label>
+              <input type="checkbox" id="c3" name="other" />
+              <label for="c3"><span></span>Other</label>
+            </div>
 
-            <label for="about-me">About Me</label>
-            <textarea name="about-me"></textarea>
+            <div className="form-input">
+              <textarea name="about-me" placeholder="Tell us about yourself!"></textarea>
+            </div>
 
-            <input type="submit" value="Submit" />
+            <div className="form-input">
+              <input type="submit" value="Submit" />
+            </div>
+
           </form>
         </div>
         {this.renderOnboardingContainer()}
