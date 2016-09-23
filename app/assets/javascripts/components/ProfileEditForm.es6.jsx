@@ -11,7 +11,6 @@ class ProfileEditForm extends React.Component {
 
   handleSubmit() {
     // Handle put request to the appropriate "Users" controller route
-    //
   }
 
   renderOnboardingContainer() {
