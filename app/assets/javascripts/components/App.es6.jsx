@@ -4,11 +4,11 @@ class App extends React.Component {
     this.state = {
       current_user: this.props.user
     };
-    
+
   }
 
   componentDidMount() {
-
+    
   }
 
   render() {
