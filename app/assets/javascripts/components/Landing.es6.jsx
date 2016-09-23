@@ -1,9 +1,7 @@
 class Landing extends React.Component {
   constructor(props) {
     super(props);
-    this.renderUserConfiguration = this.renderUserConfiguration.bind(this)
     this.renderProfileEditForm = this.renderProfileEditForm.bind(this)
-    this.renderOnboardingContainer = this.renderOnboardingContainer.bind(this)
   }
 
 
@@ -11,25 +9,10 @@ class Landing extends React.Component {
 
   }
 
-  renderUserConfiguration() {
-    this.renderProfileEditForm()
-    this.renderOnboardingContainer()
-  }
-
   renderProfileEditForm() {
     let availableSpace;
     // If the "this.props.current_user" has JUST clicked the sign up button and has not configured their personal details yet on the ProfileEditForm
-    // availableSpace = <ProfileEditForm current_user={this.props.current_user}/>
-
-    // else
-    // availableSpace = null
-    return availableSpace;
-  }
-
-  renderOnboardingContainer() {
-    let availableSpace;
-    // If the "this.props.current_user" has JUST finished filling out the ProfileEditForm and has NOT gone through the onboarding process yet
-    // availableSpace = <OnboardingContainer current_user={this.props.current_user} />
+    // availableSpace = <ProfileEditForm current_user={this.props.current_user} onboardingContainer/>
 
     // else
     // availableSpace = null
@@ -48,7 +31,7 @@ class Landing extends React.Component {
       // <Button logIn />
 
       // Return this only if there IS a "this.props.current_user"
-      // {this.renderUserConfiguration()}
+      // {this.renderProfileEditForm()}
     )
   }
 }
