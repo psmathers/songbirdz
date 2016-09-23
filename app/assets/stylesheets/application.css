@@ -48,6 +48,10 @@ input[type="submit"] {
   /*margin: auto;*/
 }
 
+ul {
+  list-style: none;
+}
+
 .form-onboarding-container {
   /*border: 1px dotted;*/
   width: 50%;
@@ -107,6 +111,14 @@ input[type="submit"] {
 
 
 /* richie css changes */
+  .match-cell {
+    margin-bottom: 20px;
+    border: 1px solid grey;
+  }
+  .player-container {
+    width: 350px;
+    display: inline-block;
+  }
   .playlist-owner {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -114,6 +126,28 @@ input[type="submit"] {
     text-align: center;
     background-color: #212121;
     color: white;
+  }
+  .dropdown {
+    vertical-align: top;
+    padding: 10px;
+    width: 550px;
+    display: inline-block;
+  }
+  .prof-pic {
+    height: 150px;
+    width: 150px;
+    vertical-align: top;
+    background-color: #9933ff;
+    display: inline-block;
+  }
+  .about {
+    height: 150px;
+    width: 350px;
+    margin-left: 20px;
+    display: inline-block;
+  }
+  .chat{
+    width: 200px;
   }
   .buttons-container {
     margin-top: -5px;
@@ -126,7 +160,26 @@ input[type="submit"] {
   }
   .like{
     display: inline-block;
-    width: 50px;
+    width: 100px;
   }
-
+  .color-key {
+    padding: 10px;
+    background-color: #212121;
+    color: white;
+  }
+  .purple {
+    color: #9933ff;
+  }
+  .blue {
+    color: #0099cc;
+  }
+  .green {
+    color: #00b36b;
+  }
+  .yellow {
+    color: #ffff00;
+  }
+  .red {
+    color: #ff0000;
+  }
 /* end richie css changes */
