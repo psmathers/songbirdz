@@ -4,7 +4,6 @@ class UserShow extends React.Component {
     this.state = { user: this.props.user, preferences: this.props.user.preferences }
     this.updateUser = this.updateUser.bind(this)
     this.showPreferences = this.showPreferences.bind(this)
-    this.showEditForm = this.showEditForm.bind(this)
   }
 
   updateUser(response) {
@@ -24,11 +23,11 @@ class UserShow extends React.Component {
 
   render() {
     let user = this.state.user
-    return(
-      <div>
-//       <pre><code>
+//           <pre><code>
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>
+    return(
+      <div>
         <h2>{user.name}</h2>
         <p>{user.age} years old</p>
         <p>{user.gender}</p>
