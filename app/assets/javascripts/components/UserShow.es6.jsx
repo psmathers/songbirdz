@@ -4,6 +4,7 @@ class UserShow extends React.Component {
     this.state = { user: this.props.user, preferences: this.props.user.preferences }
     this.updateUser = this.updateUser.bind(this)
     this.showPreferences = this.showPreferences.bind(this)
+    this.showEditForm = this.showEditForm.bind(this)
   }
 
   updateUser(response) {
@@ -18,16 +19,16 @@ class UserShow extends React.Component {
       return(<p>{pref.looking_for}</p>)
 
     }))
-
   }
+
 
   render() {
     let user = this.state.user
     return(
       <div>
-      <pre><code>
-        {JSON.stringify(this.props, null, 4)}
-</code></pre>
+//       <pre><code>
+//         {JSON.stringify(this.props, null, 4)}
+// </code></pre>
         <h2>{user.name}</h2>
         <p>{user.age} years old</p>
         <p>{user.gender}</p>
@@ -35,7 +36,7 @@ class UserShow extends React.Component {
         <p>Ages {user.min_age_choice} to {user.max_age_choice}</p>
         {this.showPreferences()}
         <p>{user.about}</p>
-        <ProfileEditForm onUpdate={this.updateUser} user={user}/>
+        <ProfileEditForm onUpdate={this.updateUser} user={this.state.user}/>
       </div>
     )
   }
