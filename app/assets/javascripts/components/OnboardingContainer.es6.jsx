@@ -19,7 +19,7 @@ class OnboardingContainer extends React.Component {
   }
 
   nextStep() {
-    this.setState({steps: this.state.stepsLeft -= 1})
+    this.setState({stepsLeft: this.state.stepsLeft -= 1})
     if (this.state.stepsLeft == 0) {
       // Redirect to the matches page
       console.log("Done with onboarding, redirect to matches page")
@@ -27,7 +27,7 @@ class OnboardingContainer extends React.Component {
   }
 
   prevStep() {
-    this.setState({steps: this.state.stepsLeft += 1})
+    this.setState({stepsLeft: this.state.stepsLeft += 1})
   }
 
   switchOnboardingSteps() {
