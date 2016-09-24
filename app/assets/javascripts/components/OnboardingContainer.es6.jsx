@@ -15,7 +15,21 @@ class OnboardingContainer extends React.Component {
   }
 
   componentDidMount() {
-
+    let userID = this.props.current_user.uid;
+    let userToken = this.props.current_user.token;
+    $.ajax({
+      url: `https://api.spotify.com/v1/users/${userID}/playlists`,
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+        "Content-Type": "application/json"
+      },
+      dataType: "json",
+      data: "{\"name\": \"Birdlist\", \"public\": false}"
+    })
+    .done((response) => {
+      console.log(response)
+    })
   }
 
   nextStep() {
