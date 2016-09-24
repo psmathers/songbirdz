@@ -7,7 +7,7 @@ class MatchCell extends React.Component {
   }
   componentDidMount() {
     this.setState({
-      match: this.props.match
+      match: this.props.data
     })
   }
 
@@ -16,7 +16,8 @@ class MatchCell extends React.Component {
       <li className="match-cell">
         <div className="player-container">
           <div className="playlist-owner">
-            {this.props.data.name}
+            {this.props.data.object.name}:
+             Tier: {this.props.data.tier}
           </div>
           <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" name="playlist" width="300" height="300" frameBorder="0" allowTransparency="true"></iframe>
             <div className="buttons-container">
@@ -29,7 +30,7 @@ class MatchCell extends React.Component {
             </form>
           </div>
         </div>
-      <DropDown match={this.props.match} />
+      <DropDown match={this.props.data.object} />
       </li>
     )
   }
