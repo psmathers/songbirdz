@@ -5,7 +5,8 @@ class OnboardingContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stepsLeft: 3
+      stepsLeft: 3,
+      playlistID: ""
     }
     this.nextStep = this.nextStep.bind(this)
     this.prevStep = this.prevStep.bind(this)
@@ -28,7 +29,7 @@ class OnboardingContainer extends React.Component {
       data: "{\"name\": \"Birdlist\", \"public\": false}"
     })
     .done((response) => {
-      console.log(response)
+      this.setState({playlistID: response.id})
     })
   }
 
@@ -51,7 +52,8 @@ class OnboardingContainer extends React.Component {
     } else if (this.state.stepsLeft == 2) {
       onboardingStep = <AnthemInfo />
     } else if (this.state.stepsLeft == 1) {
-      onboardingStep = <Playlist />
+      onboardingStep = <Playlist current_user={this.props.current_user}
+                                 playlistID={this.state.playlistID} />
     }
     return onboardingStep
   }
