@@ -46,11 +46,12 @@ class User < ApplicationRecord
   end
 
   def preference_match
-    matches= nil
-    potential_matches = User.where.not(id: self.id)
+    matches= []
+    potential_matches = (User.where.not(id: self.id)).where(age: self.min_age_choice..self.max_age_choice)
     self.preferences.each do |pref|
       if pref.looking_for == "women"
         matches = (potential_matches.where(gender: "female"))
+        matches = (matches.where)
       elsif pref.looking_for == "men"
         matches = (potential_matches.where(gender: "male"))
       end
@@ -59,23 +60,31 @@ class User < ApplicationRecord
   end
 
   def match_list
-    returned_matches= []
+    matches= []
 
     pref_matches= self.preference_match
 
     my_tracks = self.get_tracks
 
-    my_tracks.each_with_index do |mytrack,index|
-      pref_matches.each do |match|
-        # binding.pry
-        match.get_tracks.each do |track|
-          if mytrack == track
-            returned_matches << match
+    my_tracks.each_with_index do |mytrack,myindex|
+      pref_matches.map do |match|
+        if match.preference_match.include?(self)
+
+          match.get_tracks.each_with_index do |track,theirindex|
+            if theirindex == 0 && myindex == 0
+              if mytrack == track
+                matches << {"object" => match, "tier" => "1", "playlist" => "this is a string we need for the iframe playlist maybe"}
+              end
+            else
+              if mytrack == track
+                matches << {"object" => match, "tier" => "2", "playlist" => "this is a string we need for the iframe playlist maybe"}
+              end
+            end
           end
         end
       end
     end
-    returned_matches
+    matches
   end
 
 
