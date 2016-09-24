@@ -10,15 +10,15 @@ class UsersController < ApplicationController
   user.update(age: params[:age], gender: params[:gender], about: params[:about], min_age_choice: params[:minAge], max_age_choice: params[:maxAge])
 
   if params[:men]
-    user.user_preferences.create(preference_id: params[:men].to_i)
+    user.user_preferences.create(preference_id: 2)
   end
 
   if params[:women]
-    user.user_preferences.create(preference_id: params[:women].to_i)
+    user.user_preferences.create(preference_id: 1)
   end
 
   if params[:other]
-    user.user_preferences.create(preference_id: params[:other].to_i)
+    user.user_preferences.create(preference_id: 3)
   end
 
   if request.xhr?
