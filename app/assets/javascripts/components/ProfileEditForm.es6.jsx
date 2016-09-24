@@ -40,6 +40,7 @@ class ProfileEditForm extends React.Component {
   }
 
   render() {
+    let user = this.props.user
     let route = `/users/${this.props.user.id}`
     return(
       <div className="form-onboarding-container">
@@ -48,21 +49,21 @@ class ProfileEditForm extends React.Component {
           <form action={route} method="post" className="edit-form" onSubmit={this.handleSubmit}>
             <input type="hidden" name="_method" value="put"/>
             <div className="form-input">
-              <input ref="age" className="age" type="number" name="age" placeholder="Your Age" />
+              <input ref="age" className="age" type="number" name="age" placeholder="Your Age" defaultValue={user.age} />
             </div>
 
             <div className="form-input">
               <label for="age-range">Age Range:</label><br/>
-              <input ref="min" className="min-max" name="minAge" type="number" min="18" max="99" placeholder="min" />
+              <input ref="min" className="min-max" name="minAge" type="number" min="18" max="99" placeholder="min" defaultValue={user.min_age_choice}/>
 
               <span id="btwn"> to </span>
 
-              <input ref="max" className="min-max" name="maxAge" type="number" min="19" max="100" placeholder="max" />
+              <input ref="max" className="min-max" name="maxAge" type="number" min="19" max="100" placeholder="max" defaultValue={user.max_age_choice}/>
             </div>
 
             <div className="form-input">
               <label for="gender">Gender:</label><br/>
-              <select ref="gender" name="gender">
+              <select ref="gender" name="gender" defaultValue={user.gender}>
               {/* Determine all of the genders that we'll be adding here */}
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -81,7 +82,7 @@ class ProfileEditForm extends React.Component {
             </div>
 
             <div className="form-input">
-              <textarea ref="about" name="about" placeholder="Tell us about yourself!"></textarea>
+              <textarea ref="about" name="about" placeholder="Tell us about yourself!" defaultValue={user.about}></textarea>
             </div>
 
             <div className="form-input">
