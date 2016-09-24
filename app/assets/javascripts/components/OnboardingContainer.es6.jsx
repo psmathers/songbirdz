@@ -5,7 +5,8 @@ class OnboardingContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stepsLeft: 3
+      stepsLeft: 3,
+      playlistID: ""
     }
     this.nextStep = this.nextStep.bind(this)
     this.prevStep = this.prevStep.bind(this)
@@ -15,11 +16,25 @@ class OnboardingContainer extends React.Component {
   }
 
   componentDidMount() {
-
+    let userID = this.props.current_user.uid;
+    let userToken = this.props.current_user.token;
+    $.ajax({
+      url: `https://api.spotify.com/v1/users/${userID}/playlists`,
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+        "Content-Type": "application/json"
+      },
+      dataType: "json",
+      data: "{\"name\": \"Birdlist\", \"public\": false}"
+    })
+    .done((response) => {
+      this.setState({playlistID: response.id})
+    })
   }
 
   nextStep() {
-    this.setState({steps: this.state.stepsLeft -= 1})
+    this.setState({stepsLeft: this.state.stepsLeft -= 1})
     if (this.state.stepsLeft == 0) {
       // Redirect to the matches page
       console.log("Done with onboarding, redirect to matches page")
@@ -27,7 +42,7 @@ class OnboardingContainer extends React.Component {
   }
 
   prevStep() {
-    this.setState({steps: this.state.stepsLeft += 1})
+    this.setState({stepsLeft: this.state.stepsLeft += 1})
   }
 
   switchOnboardingSteps() {
@@ -37,7 +52,8 @@ class OnboardingContainer extends React.Component {
     } else if (this.state.stepsLeft == 2) {
       onboardingStep = <AnthemInfo />
     } else if (this.state.stepsLeft == 1) {
-      onboardingStep = <Playlist />
+      onboardingStep = <Playlist current_user={this.props.current_user}
+                                 playlistID={this.state.playlistID} />
     }
     return onboardingStep
   }
