@@ -26,18 +26,24 @@ class ProfileEditForm extends React.Component {
   }
 
   render() {
+    let route = `/users/${this.props.user.id}`
     return(
       <div className="form-onboarding-container">
         <div className="form-container">
           <h3>Create your profile</h3>
-          <form className="edit-form" onSubmit={this.handleSubmit}>
+          <form action={route} method="post" className="edit-form" onSubmit={this.handleSubmit}>
+            <input type="hidden" name="_method" value="put"/>
+            <div className="form-input">
+              <input className="age" type="number" name="age" placeholder="Your Age" />
+            </div>
+
             <div className="form-input">
               <label for="age-range">Age Range:</label><br/>
-              <input className="min-max" name="min-age" type="number" min="18" max="99" placeholder="min" />
+              <input className="min-max" name="minAge" type="number" min="18" max="99" placeholder="min" />
 
-              <span> to </span>
+              <span id="btwn"> to </span>
 
-              <input className="min-max" name="max-age" type="number" min="19" max="100" placeholder="max" />
+              <input className="min-max" name="maxAge" type="number" min="19" max="100" placeholder="max" />
             </div>
 
             <div className="form-input">
@@ -50,18 +56,18 @@ class ProfileEditForm extends React.Component {
             </div>
 
             <div className="form-input">
-              <label>Preferences: </label><br/>
+              <label>Looking for: </label><br/>
                             {/* Determine all of the "looking fors" that we'll be adding here */}
               <input type="checkbox" id="c1" name="men" />
-              <label for="c1"><span></span>Men</label>
+              <label className="check" for="c1"><span></span>Men</label>
               <input type="checkbox" id="c2" name="women" />
-              <label for="c2"><span></span>Women</label>
+              <label className="check" for="c2"><span></span>Women</label>
               <input type="checkbox" id="c3" name="other" />
-              <label for="c3"><span></span>Other</label>
+              <label className="check" for="c3"><span></span>Other</label>
             </div>
 
             <div className="form-input">
-              <textarea name="about-me" placeholder="Tell us about yourself!"></textarea>
+              <textarea name="about" placeholder="Tell us about yourself!"></textarea>
             </div>
 
             <div className="form-input">

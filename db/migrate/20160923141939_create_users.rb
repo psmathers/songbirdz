@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :provider, null: false
       t.string :uid, null: false
       t.string :token, null: false
-      t.datetime :age
+      t.integer :age
       t.string :gender
       t.text :about
       t.integer :min_age_choice

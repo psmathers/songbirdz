@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160923142125) do
     t.string   "provider",       null: false
     t.string   "uid",            null: false
     t.string   "token",          null: false
-    t.datetime "age"
+    t.integer  "age"
     t.string   "gender"
     t.text     "about"
     t.integer  "min_age_choice"
