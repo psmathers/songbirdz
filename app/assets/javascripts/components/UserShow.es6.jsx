@@ -27,14 +27,16 @@ class UserShow extends React.Component {
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>
     return(
-      <div>
-        <h2>{user.name}</h2>
-        <p>{user.age} years old</p>
-        <p>{user.gender}</p>
-        <p>Looking for:</p>
-        <p>Ages {user.min_age_choice} to {user.max_age_choice}</p>
-        {this.showPreferences()}
-        <p>{user.about}</p>
+      <div className="profile-container">
+        <div className="profile">
+          <h2>{user.name}</h2>
+          <p>{user.age} years old</p>
+          <p>{user.gender}</p>
+          <p>Looking for:</p>
+          <p>Ages {user.min_age_choice} to {user.max_age_choice}</p>
+          {this.showPreferences()}
+          <p>{user.about}</p>
+        </div>
         <ProfileEditForm onUpdate={this.updateUser} user={this.state.user}/>
       </div>
     )
