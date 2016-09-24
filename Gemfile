@@ -27,8 +27,8 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-spotify'
 
 gem 'react-rails'
-
 gem 'pry-rails'
+gem 'jquery-ui-rails'
 
 
 # Use Redis adapter to run Action Cable in production
