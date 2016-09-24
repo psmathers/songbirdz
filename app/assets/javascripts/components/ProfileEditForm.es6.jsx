@@ -17,13 +17,14 @@ class ProfileEditForm extends React.Component {
         data: $(event.target).serialize()
     }).done((response) => {
         this.props.onUpdate(response)
-        this.refs.age.value = ""
-        this.refs.min.value = ""
-        this.refs.max.value = ""
-        this.refs.men.checked = false
-        this.refs.women.checked = false
-        this.refs.other.checked = false
-        this.refs.about.value = ""
+        this.props.toggle()
+        // this.refs.age.value = ""
+        // this.refs.min.value = ""
+        // this.refs.max.value = ""
+        // this.refs.men.checked = false
+        // this.refs.women.checked = false
+        // this.refs.other.checked = false
+        // this.refs.about.value = ""
     })
   }
 

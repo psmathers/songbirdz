@@ -37,7 +37,7 @@ class UserShow extends React.Component {
 
   showForm() {
     if (this.state.formPresent) {
-      return(<ProfileEditForm onUpdate={this.updateUser} user={this.state.user}/>)
+      return(<ProfileEditForm onUpdate={this.updateUser} toggle={this.toggleForm} user={this.state.user}/>)
     } else {
       return null
     }
