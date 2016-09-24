@@ -12,10 +12,11 @@
 <% if current_user %>
   Welcome <%= current_user.name %>!
   <%= link_to "Sign Out", signout_path %>
+  <a href="/users/<%= current_user.id %>">Profile</a>
 <% else %>
   <%= link_to "Sign in with Spotify", "/auth/spotify" %>
 <% end %>
-<!-- <a href="https://api.spotify.com/v1/users/12159732474/playlists/7yLqsrotOhlSKKDy45iXKk/tracks?access_token=BQBTrhHbE79ahblEOWxq123vbR1f_YcnKeoNbyhjk8pd5jal_IgtdaqCHsz6lQHfbX_XijVXHs56VLT3ANThjzD7MCU-C8ElwzuB01yELATUgnBJnc2MPqY1r-gHnJx-hCQdyanfeDvzFivg1NTSQZIiPDxXUeEs0L2sfco98ZWiQXBnsjeSCwVMw9fR_NjWIexbfV0s7AiBr8y-Lv9YD8VgB0SZVRaUoi5MjzfFvEasEPeprsfSUFtCYUOv76BbD5CVgbHf_Uzm9iDQQsoycvNTe41YiGNb">tracks</a> -->
+  <%= link_to "Home", root_path %>
     <%= yield %>
   </body>
 </html>
