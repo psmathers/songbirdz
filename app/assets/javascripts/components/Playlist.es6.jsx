@@ -5,6 +5,7 @@ class Playlist extends React.Component {
       tracks: []
     }
     this.addTracksToBirdlist = this.addTracksToBirdlist.bind(this)
+    this.delayBirdlistPopulating = this.delayBirdlistPopulating.bind(this)
   }
 
   componentDidMount() {
@@ -44,10 +45,16 @@ class Playlist extends React.Component {
     })
   }
 
+  delayBirdlistPopulating(tracks, userToken, userID, playlistID) {
+    if (tracks.length > 0) {
+      this.addTracksToBirdlist(tracks, userToken, userID, playlistID)
+    }
+  }
+
   render() {
     return(
       <div>
-        {this.addTracksToBirdlist(this.state.tracks, this.props.current_user.token, this.props.current_user.uid, this.props.playlistID)}
+        {this.delayBirdlistPopulating(this.state.tracks, this.props.current_user.token, this.props.current_user.uid, this.props.playlistID)}
       </div>
     )
   }
