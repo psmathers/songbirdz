@@ -19,9 +19,7 @@ class UserShow extends React.Component {
   }
 
   showPreferences() {
-    // debugger
     return (this.state.preferences.map((pref) => {
-      // debugger
       return(<p>{pref.looking_for}</p>)
 
     }))
@@ -32,16 +30,14 @@ class UserShow extends React.Component {
     this.setState({
       formPresent: shouldToggle
     })
-    // debugger
     if (shouldToggle) {
       return this.showForm()
     }
   }
 
   showForm() {
-    // debugger
     if (this.state.formPresent) {
-      return(<ProfileEditForm onUpdate={this.updateUser} user={this.state.user}/>)
+      return(<ProfileEditForm onUpdate={this.updateUser} toggle={this.toggleForm} user={this.state.user}/>)
     } else {
       return null
     }

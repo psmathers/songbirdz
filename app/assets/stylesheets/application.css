@@ -222,15 +222,3 @@ input[type=number]::-webkit-outer-spin-button {
 /* end richie css changes */
 
 /* user profile */
-
-.profile {
-  width: 50%;
-  margin: auto;
-  padding: 10px;
-  min-width: 400px;
-  text-align: center;
-}
-.profile h2 {
-  margin-top: 5px;
-  margin-bottom: 15px;
-}

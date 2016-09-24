@@ -78,4 +78,33 @@ class User < ApplicationRecord
     returned_matches
   end
 
+
+  def update_preferences(params)
+    if params[:men]
+      self.user_preferences.create(preference_id: 1)
+    else
+      pref = UserPreference.find_by(user_id: self.id, preference_id: 1)
+      if pref
+        pref.destroy
+      end
+    end
+
+    if params[:women]
+      self.user_preferences.create(preference_id: 2)
+    else
+      pref = UserPreference.find_by(user_id: self.id, preference_id: 2)
+      if pref
+        pref.destroy
+      end
+    end
+
+    if params[:other]
+      self.user_preferences.create(preference_id: 3)
+    else
+      pref = UserPreference.find_by(user_id: self.id, preference_id: 3)
+      if pref
+        pref.destroy
+      end
+    end
+  end
 end
