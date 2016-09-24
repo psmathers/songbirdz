@@ -14,4 +14,28 @@ class User < ApplicationRecord
     end
   end
 
+  def api_playlists
+    uri = URI("https://api.spotify.com/v1/users/#{self.uid}/playlists")
+    req = Net::HTTP::Get.new(uri)
+    req.add_field("Authorization", "token #{self.token}")
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    response = http.request(req)
+
+    JSON.parse(response.body)
+
+  end
+
+  # def match_list
+  #   returned_matches= []
+  #   matches= User.all
+  #
+  #   current_playlist= current_user.api_playlists.songbirdz
+  #
+  #   matches.each do |match|
+  #   end
+  #
+  # end
+
 end
