@@ -12,13 +12,13 @@ class MatchCell extends React.Component {
   }
 
   render() {
-    let anthemID = this.props.data.object.anthem_id
+    let anthemID = this.props.data.anthem_id
     return(
       <li className="match-cell">
         <div className="player-container">
           <div className="playlist-owner">
-            {this.props.data.object.name}:
-             Tier: {this.props.data.tier}
+            {this.props.data.name} <span>| </span>
+             Tier: {this.props.data.match_tier}
           </div>
           <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
             <div className="buttons-container">
@@ -31,7 +31,7 @@ class MatchCell extends React.Component {
             </form>
           </div>
         </div>
-      <DropDown match={this.props.data.object} />
+      <DropDown match={this.props.data} />
       </li>
     )
   }
