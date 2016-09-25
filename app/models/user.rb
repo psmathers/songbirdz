@@ -51,6 +51,7 @@ class User < ApplicationRecord
 
     end
     # tracks_arr
+    # binding.pry
     tracks_hash
   end
 

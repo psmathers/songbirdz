@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
  def show
+  if request.xhr?
+    current_user.get_anthem_id
+    current_user.save
+  end
   @user = current_user.as_json(include: :preferences)
  end
 
