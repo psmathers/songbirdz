@@ -76,7 +76,7 @@ class CurrentBirdlist extends React.Component {
         "Content-Type": "application/json"
       },
       dataType: "json",
-      data: `{ \"tracks\" : [{ \"uri\": ${trackURI}, \"positions\": [${relevantSongIndex}] }`
+      data: `{ \"tracks\" : [{ \"positions\": [${relevantSongIndex}], \"uri\": \"${trackURI}\"}] }`
     })
     .done((response) => {
       console.log(response)
