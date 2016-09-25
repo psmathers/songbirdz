@@ -6,6 +6,7 @@ class CurrentBirdlist extends React.Component {
     };
     this.deleteSongFromBirdlist = this.deleteSongFromBirdlist.bind(this)
     this.setAnthem = this.setAnthem.bind(this)
+    this.setAnthemId = this.setAnthemId.bind(this)
   }
 
   componentDidMount() {
@@ -28,6 +29,15 @@ class CurrentBirdlist extends React.Component {
       }
       this.setState({tracks: this.state.tracks.concat(trackURIs)})
     }.bind(this))
+  }
+
+  setAnthemId() {
+    // debugger
+    $.ajax({
+      url: `/users/${this.props.currentUser.id}`,
+      method: "GET",
+      // data: {anthem_id: ""}
+    })
   }
 
   setAnthem(trackURI, event) {
@@ -54,6 +64,7 @@ class CurrentBirdlist extends React.Component {
     })
     .done((response) => {
       console.log(response)
+      this.setAnthemId()
     })
   }
 
