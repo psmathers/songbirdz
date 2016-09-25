@@ -7,6 +7,8 @@ class Birdlist extends React.Component {
       playlistID: ""
     };
     this.currentBirdlist = this.currentBirdlist.bind(this);
+    this.birdlistSearchResults = this.birdlistSearchResults.bind(this)
+    this.updateSearchResults = this.updateSearchResults.bind(this);
   }
 
   componentDidMount() {
@@ -17,7 +19,7 @@ class Birdlist extends React.Component {
       url: `https://api.spotify.com/v1/users/${userID}/playlists`,
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${userToken}`,
+        "Authorization": `Bearer ${userToken}`
       }
     })
     .done((response) => {
@@ -28,6 +30,10 @@ class Birdlist extends React.Component {
         }
       }
     })
+  }
+
+  updateSearchResults(tracks) {
+    this.setState({searchResults: tracks})
   }
 
   currentBirdlist() {
@@ -41,14 +47,22 @@ class Birdlist extends React.Component {
     return currentBirdlist
   }
 
+  birdlistSearchResults() {
+    let birdlistSearchResults
+    if (this.state.searchResults.length > 0) {
+      birdlistSearchResults = <birdlistSearchResults results={this.state.searchResults} />
+    } else {
+      birdlistSearchResults = null
+    }
+    return birdlistSearchResults
+  }
+
   render() {
     return(
       <div>
         {this.currentBirdlist()}
-        {/* <BirdlistSearchBar />
-
-          // Appears after searching for a song in <BirdlistSearchBar />
-          <BirdlistSearchResults /> */}
+        <BirdlistSearchBar onSearch={this.updateSearchResults} />
+        {this.birdlistSearchResults()}
       </div>
     )
   }
