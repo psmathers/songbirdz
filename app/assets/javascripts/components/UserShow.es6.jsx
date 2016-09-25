@@ -11,6 +11,8 @@ class UserShow extends React.Component {
     this.showPreferences = this.showPreferences.bind(this)
     this.toggleForm = this.toggleForm.bind(this)
     this.showForm = this.showForm.bind(this)
+    this.showAge = this.showAge.bind(this)
+    this.showMinMax = this.showMinMax.bind(this)
   }
 
   updateUser(response) {
@@ -43,6 +45,27 @@ class UserShow extends React.Component {
     }
   }
 
+  showAge() {
+    let age = this.props.user.age
+    if (age) {
+      return (
+        <p>{this.props.user.age} years old</p>
+      )
+    }
+  }
+
+   showMinMax() {
+    let user = this.props.user
+    if (user.min_age_choice) {
+      return (
+        <div>
+        <p>Looking for:</p>
+        <p>Ages {user.min_age_choice} to {user.max_age_choice}</p>
+        </div>
+      )
+    }
+  }
+
 
   render() {
     let user = this.state.user
@@ -52,10 +75,9 @@ class UserShow extends React.Component {
     return(
       <div>
         <h2>{user.name}</h2>
-        <p>{user.age} years old</p>
+        {this.showAge()}
         <p>{user.gender}</p>
-        <p>Looking for:</p>
-        <p>Ages {user.min_age_choice} to {user.max_age_choice}</p>
+        {this.showMinMax()}
         {this.showPreferences()}
         <p>{user.about}</p>
         <button onClick={this.toggleForm}>Edit</button>
