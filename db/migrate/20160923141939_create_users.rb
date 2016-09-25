@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :provider, null: false
       t.string :uid, null: false
       t.string :token, null: false
+      t.string :refresh_token, null: false
       t.integer :age
       t.string :gender
       t.text :about
