@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20160923142125) do
     t.text     "about"
     t.integer  "min_age_choice"
     t.integer  "max_age_choice"
+    t.string   "birdlist_id"
+    t.string   "anthem_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

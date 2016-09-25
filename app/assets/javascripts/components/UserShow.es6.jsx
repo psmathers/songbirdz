@@ -46,16 +46,16 @@ class UserShow extends React.Component {
   }
 
   showAge() {
-    let age = this.props.user.age
+    let age = this.state.user.age
     if (age) {
       return (
-        <p>{this.props.user.age} years old</p>
+        <p>{age} years old</p>
       )
     }
   }
 
    showMinMax() {
-    let user = this.props.user
+    let user = this.state.user
     if (user.min_age_choice) {
       return (
         <div>

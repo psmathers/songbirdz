@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
   has_many :received_pairs, class_name: "Pair", foreign_key: :receiver_id
 
+  before_update :get_birdlist_id
+  before_update :get_anthem_id
+
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
@@ -14,7 +18,7 @@ class User < ApplicationRecord
     end
   end
 
-  def get_birdlist
+  def get_birdlist_id
     url = "https://api.spotify.com/v1/users/#{self.uid}/playlists/?access_token=#{self.token}"
     response = Net::HTTP.get_response(URI.parse(url))
 
@@ -30,30 +34,42 @@ class User < ApplicationRecord
       end
     end
 
-    playlist_obj
+    self.birdlist_id = playlist_obj["id"]
   end
 
   def get_tracks
-    id = self.get_birdlist["id"]
-    url = "https://api.spotify.com/v1/users/#{self.uid}/playlists/#{id}?access_token=#{self.token}&fields=tracks.items(track(name))"
+    id = self.birdlist_id
+    url = "https://api.spotify.com/v1/users/#{self.uid}/playlists/#{id}?access_token=#{self.token}&fields=tracks.items(track(name,id))"
     response = Net::HTTP.get_response(URI.parse(url))
     playlist_hash = JSON.parse(response.body)
     tracks_arr = playlist_hash["tracks"]["items"]
+    tracks_hash = {}
     tracks_arr.map! do |track_obj|
-      track_obj["track"]["name"]
+      # binding.pry
+      # track_obj["track"]["name"]
+      tracks_hash.store(track_obj["track"]["id"], track_obj["track"]["name"])
+
     end
-    tracks_arr
+    # tracks_arr
+    tracks_hash
+  end
+
+  def get_anthem_id
+    self.anthem_id = self.get_tracks.first[0]
   end
 
   def preference_match
     matches= []
-    potential_matches = (User.where.not(id: self.id)).where(age: self.min_age_choice..self.max_age_choice)
+    potential_matches = User.where(age: self.min_age_choice..self.max_age_choice)
+    potential_matches = potential_matches - [self]
+    # (User.where.not(id: self.id))
+    # binding.pry
     self.preferences.each do |pref|
       if pref.looking_for == "women"
-        matches = (potential_matches.where(gender: "female"))
-        matches = (matches.where)
+        matches = potential_matches.select { |match| match.gender == "female" }#(potential_matches.where(gender: "female"))
+        # matches = (matches.where)
       elsif pref.looking_for == "men"
-        matches = (potential_matches.where(gender: "male"))
+        matches = potential_matches.select { |match| match.gender == "male" } #(potential_matches.where(gender: "male"))
       end
     end
     matches
@@ -64,13 +80,15 @@ class User < ApplicationRecord
 
     pref_matches= self.preference_match
 
-    my_tracks = self.get_tracks
+    my_tracks = self.get_tracks #now a hash with id as key and song title as value
 
-    my_tracks.each_with_index do |mytrack,myindex|
+    my_tracks.each_with_index do |(mytrack_id, mytrack), myindex|
+      # binding.pry
       pref_matches.map do |match|
+        # binding.pry
         if match.preference_match.include?(self)
 
-          match.get_tracks.each_with_index do |track,theirindex|
+          match.get_tracks.each_with_index do |(track_id, track),theirindex|
             if theirindex == 0 && myindex == 0
               if mytrack == track
                 matches << {"object" => match, "tier" => "1", "playlist" => "this is a string we need for the iframe playlist maybe"}

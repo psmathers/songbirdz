@@ -12,6 +12,7 @@ class MatchCell extends React.Component {
   }
 
   render() {
+    let anthemID = this.props.data.object.anthem_id
     return(
       <li className="match-cell">
         <div className="player-container">
@@ -19,7 +20,7 @@ class MatchCell extends React.Component {
             {this.props.data.object.name}:
              Tier: {this.props.data.tier}
           </div>
-          <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" name="playlist" width="300" height="300" frameBorder="0" allowTransparency="true"></iframe>
+          <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
             <div className="buttons-container">
             <form className="like" action="/like" method="post">
             <input type="submit" value="Like"/>
