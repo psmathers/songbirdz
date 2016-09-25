@@ -47,13 +47,16 @@ class User < ApplicationRecord
 
   def preference_match
     matches= []
-    potential_matches = (User.where.not(id: self.id)).where(age: self.min_age_choice..self.max_age_choice)
+    potential_matches = User.where(age: self.min_age_choice..self.max_age_choice)
+    potential_matches = potential_matches - [self]
+    # (User.where.not(id: self.id))
+    # binding.pry
     self.preferences.each do |pref|
       if pref.looking_for == "women"
-        matches = (potential_matches.where(gender: "female"))
-        matches = (matches.where)
+        matches = potential_matches.select { |match| match.gender == "female" }#(potential_matches.where(gender: "female"))
+        # matches = (matches.where)
       elsif pref.looking_for == "men"
-        matches = (potential_matches.where(gender: "male"))
+        matches = potential_matches.select { |match| match.gender == "male" } #(potential_matches.where(gender: "male"))
       end
     end
     matches
@@ -67,7 +70,9 @@ class User < ApplicationRecord
     my_tracks = self.get_tracks
 
     my_tracks.each_with_index do |mytrack,myindex|
+      # binding.pry
       pref_matches.map do |match|
+        # binding.pry
         if match.preference_match.include?(self)
 
           match.get_tracks.each_with_index do |track,theirindex|
