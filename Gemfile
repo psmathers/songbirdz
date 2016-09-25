@@ -27,7 +27,6 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-spotify'
 
 gem 'react-rails'
-
 gem 'pry-rails'
 
 

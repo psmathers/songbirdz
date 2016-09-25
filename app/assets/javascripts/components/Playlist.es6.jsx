@@ -5,11 +5,13 @@ class Playlist extends React.Component {
       tracks: []
     }
     this.addTracksToBirdlist = this.addTracksToBirdlist.bind(this)
+    this.delayBirdlistPopulating = this.delayBirdlistPopulating.bind(this)
+    this.getBirdlist = this.getBirdlist.bind(this)
   }
 
   componentDidMount() {
-    let userID = this.props.current_user.uid;
-    let userToken = this.props.current_user.token;
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
     let playlistID = this.props.playlistID;
 
     {/* Get a list of current user's 5 top tracks */}
@@ -44,10 +46,21 @@ class Playlist extends React.Component {
     })
   }
 
+  getBirdlist() {
+    return <iframe src={`https://embed.spotify.com/?uri=spotify:user:${this.props.current_user.uid}:playlist:${this.props.playlistID}`} width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  }
+
+  delayBirdlistPopulating(tracks, userToken, userID, playlistID) {
+    if (tracks.length > 0) {
+      this.addTracksToBirdlist(tracks, userToken, userID, playlistID)
+    }
+  }
+
   render() {
     return(
       <div>
-        {this.addTracksToBirdlist(this.state.tracks, this.props.current_user.token, this.props.current_user.uid, this.props.playlistID)}
+        {this.delayBirdlistPopulating(this.state.tracks, this.props.currentUser.token, this.props.currentUser.uid, this.props.playlistID)}
+        {this.state.tracks.length > 0 ? this.getBirdlist() : null}
       </div>
     )
   }

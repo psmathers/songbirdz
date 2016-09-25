@@ -16,8 +16,8 @@ class OnboardingContainer extends React.Component {
   }
 
   componentDidMount() {
-    let userID = this.props.current_user.uid;
-    let userToken = this.props.current_user.token;
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
     $.ajax({
       url: `https://api.spotify.com/v1/users/${userID}/playlists`,
       method: "POST",
@@ -26,7 +26,7 @@ class OnboardingContainer extends React.Component {
         "Content-Type": "application/json"
       },
       dataType: "json",
-      data: "{\"name\": \"Birdlist\", \"public\": false}"
+      data: "{ \"name\" : \"Birdlist\", \"public\" : false}"
     })
     .done((response) => {
       this.setState({playlistID: response.id})
@@ -52,7 +52,7 @@ class OnboardingContainer extends React.Component {
     } else if (this.state.stepsLeft == 2) {
       onboardingStep = <AnthemInfo />
     } else if (this.state.stepsLeft == 1) {
-      onboardingStep = <Playlist current_user={this.props.current_user}
+      onboardingStep = <Playlist currentUser={this.props.currentUser}
                                  playlistID={this.state.playlistID} />
     }
     return onboardingStep
