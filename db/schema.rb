@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160923142125) do
     t.string   "provider",       null: false
     t.string   "uid",            null: false
     t.string   "token",          null: false
+    t.string   "refresh_token",  null: false
     t.integer  "age"
     t.string   "gender"
     t.text     "about"

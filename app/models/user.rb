@@ -17,7 +17,23 @@ class User < ApplicationRecord
       user.name = auth["info"]["name"]
       user.name = auth["info"]["name"]
       user.token = auth["credentials"]["token"]
+      user.refresh_token = auth["credentials"]["refresh_token"]
     end
+  end
+
+  def get_new_token
+    uri = URI.parse("https://accounts.spotify.com/api/token")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    req = Net::HTTP::Post.new(uri)
+    req.content_type = "application/x-www-form-urlencoded"
+    data = URI.encode_www_form({'client_id'=> "#{Rails.application.secrets.client_id}", 'client_secret' =>"#{Rails.application.secrets.client_secret}", 'refresh_token'=>"#{self.refresh_token}", 'grant_type' =>'refresh_token'})
+    req.body = data
+    response = http.request(req)
+    json = JSON.parse(response.body)
+    self.token = json["access_token"]
+    self.save
   end
 
   def get_birdlist_id
