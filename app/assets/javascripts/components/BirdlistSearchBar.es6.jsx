@@ -1,7 +1,7 @@
 class BirdlistSearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ;
+    // this.state = ;
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -16,7 +16,7 @@ class BirdlistSearchBar extends React.Component {
       url: `https://api.spotify.com/v1/search?q=${title}&type=track`,
       method: "GET"
     })
-    .done({response} => {
+    .done((response) => {
       let trackURIs = []
       for (var i = 0; i < response.tracks.items.length; i++) {
         trackURIs.push(response.tracks.items[i].uri)
