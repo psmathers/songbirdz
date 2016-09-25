@@ -16,6 +16,7 @@ class Matches extends React.Component {
     //     {JSON.stringify(this.props, null, 4)}
     //   </code></pre>
     return(
+
       <div>
         <MatchesViewAll matches={this.props.matches} />
         <ColorKey />

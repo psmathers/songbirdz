@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :match_tier
+
   has_many :user_preferences
   has_many :preferences, through: :user_preferences
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
@@ -76,6 +78,10 @@ class User < ApplicationRecord
     matches
   end
 
+  # def match_tier=(match_tier)
+  #   @match_tier = match_tier
+  # end
+
   def match_list
     matches= []
 
@@ -90,13 +96,20 @@ class User < ApplicationRecord
         if match.preference_match.include?(self)
 
           match.get_tracks.each_with_index do |(track_id, track),theirindex|
+            # binding.pry
             if theirindex == 0 && myindex == 0
               if mytrack == track
-                matches << {"object" => match, "tier" => "1", "playlist" => "this is a string we need for the iframe playlist maybe"}
+                match.match_tier = 1
+                matches << match
+                # matches << {"object" => match, "tier" => "1", "playlist" => "this is a string we need for the iframe playlist maybe"}
               end
             else
-              if mytrack == track
-                matches << {"object" => match, "tier" => "2", "playlist" => "this is a string we need for the iframe playlist maybe"}
+
+              if mytrack == track && !matches.include?(match)
+                # binding.pry
+                match.match_tier = 2
+                matches << match
+                # matches << {"object" => match, "tier" => "2", "playlist" => "this is a string we need for the iframe playlist maybe"}
               end
             end
           end
