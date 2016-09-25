@@ -11,15 +11,13 @@ class Birdlist extends React.Component {
   }
 
   render() {
-    {/*
-      <div>
-        // Always appears
-        <CurrentBirdlist />
-        <BirdlistSearchBar />
+    <div>
+      <CurrentBirdlist currentUser={this.props.currentUser}
+                       playlistID={this.props.playlistID} />
+      {/* <BirdlistSearchBar />
 
-        // Appears after searching for a song in <BirdlistSearchBar />
-        <BirdlistSearchResults />
-      </div>
-    */}
+      // Appears after searching for a song in <BirdlistSearchBar />
+      <BirdlistSearchResults /> */}
+    </div>
   }
 }

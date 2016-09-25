@@ -10,8 +10,8 @@ class Playlist extends React.Component {
   }
 
   componentDidMount() {
-    let userID = this.props.current_user.uid;
-    let userToken = this.props.current_user.token;
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
     let playlistID = this.props.playlistID;
 
     {/* Get a list of current user's 5 top tracks */}
@@ -59,7 +59,7 @@ class Playlist extends React.Component {
   render() {
     return(
       <div>
-        {this.delayBirdlistPopulating(this.state.tracks, this.props.current_user.token, this.props.current_user.uid, this.props.playlistID)}
+        {this.delayBirdlistPopulating(this.state.tracks, this.props.currentUser.token, this.props.currentUser.uid, this.props.playlistID)}
         {this.state.tracks.length > 0 ? this.getBirdlist() : null}
       </div>
     )

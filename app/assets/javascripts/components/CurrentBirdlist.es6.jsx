@@ -9,13 +9,13 @@ class CurrentBirdlist extends React.Component {
   }
 
   componentDidMount() {
-    let userID = this.props.current_user.uid;
-    let userToken = this.props.current_user.token;
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
     let playlistID = this.props.playlistID;
 
     {/* Get a list of current user's 5 top tracks */}
     $.ajax({
-      url: "https://api.spotify.com/v1/me/top/tracks?limit=5",
+      url: `https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`,
       method: "GET",
       headers: {
         "Authorization": `Bearer ${userToken}`,
@@ -24,7 +24,7 @@ class CurrentBirdlist extends React.Component {
     .done((response) => {
       let trackURIs = []
       for (var i = 0; i < response.items.length; i++) {
-        trackURIs.push(response.items[i].uri)
+        trackURIs.push(response.items[i].track.uri)
       }
       this.setState({tracks: this.state.tracks.concat(trackURIs)})
     }.bind(this))
@@ -37,6 +37,24 @@ class CurrentBirdlist extends React.Component {
     oldTracksArray.splice(0, 0, removedElement[0]);
     var newTracksArray = oldTracksArray;
     this.setState({tracks: newTracksArray});
+
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
+    let playlistID = this.props.playlistID;
+
+    $.ajax({
+      url: `https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`,
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+        "Content-Type": "application/json"
+      },
+      dataType: "json",
+      data: `{ \"range_start\" : ${relevantSongIndex}, \"insert_before\" : 0 }`
+    })
+    .done((response) => {
+      console.log(response)
+    })
   }
 
   deleteSongFromBirdlist(trackURI, event) {
@@ -45,6 +63,24 @@ class CurrentBirdlist extends React.Component {
     oldTracksArray.splice(relevantSongIndex, 1);
     var newTracksArray = oldTracksArray;
     this.setState({tracks: newTracksArray});
+
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
+    let playlistID = this.props.playlistID;
+
+    $.ajax({
+      url: `https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`,
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+        "Content-Type": "application/json"
+      },
+      dataType: "json",
+      data: `{ \"tracks\" : [{ \"uri\": ${trackURI}, \"positions\": [${relevantSongIndex}] }`
+    })
+    .done((response) => {
+      console.log(response)
+    })
   }
 
   render() {
