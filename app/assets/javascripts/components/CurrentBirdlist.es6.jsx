@@ -32,8 +32,25 @@ class CurrentBirdlist extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.songsFromSearchResults.length > 0) {
-      this.setState({tracks: this.state.tracks.concat(nextProps.songsFromSearchResults)})
+    let searchResults = nextProps.songsFromSearchResults
+    if (searchResults.length > 0) {
+      this.setState({tracks: this.state.tracks.concat(searchResults)})
+
+      let userID = this.props.currentUser.uid;
+      let userToken = this.props.currentUser.token;
+      let playlistID = this.props.playlistID;
+
+      $.ajax({
+        url: `https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks?uris=${searchResults[searchResults.length - 1]}`,
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${userToken}`,
+          "Content-Type": "application/json"
+        }
+      })
+      .done((response) => {
+        console.log(response)
+      })
     }
   }
 
