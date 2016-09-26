@@ -22,7 +22,7 @@ class OnboardingContainer extends React.Component {
     this.setState({stepsLeft: this.state.stepsLeft -= 1})
     if (this.state.stepsLeft == 0) {
       // Redirect to the matches page
-      console.log("Done with onboarding, redirect to matches page")
+      console.log("Done with the onboarding, redirect to matches page")
     }
   }
 
