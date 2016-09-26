@@ -28,7 +28,7 @@ class Birdlist extends React.Component {
       this.setState({userPlaylists: response.items})
       for (var i = 0; i < this.state.userPlaylists.length; i++) {
         if (this.state.userPlaylists[i].name === "Birdlist") {
-          this.setState({playlistID: this.state.userPlaylists[i].id })
+          this.setState({playlistID: this.state.userPlaylists[i].id})
         }
       }
     })
