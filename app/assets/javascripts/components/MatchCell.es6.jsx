@@ -8,6 +8,7 @@ class MatchCell extends React.Component {
   }
 
   componentDidMount() {
+    // debugger
     this.setState({
       match: this.props.data
     })

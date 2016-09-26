@@ -2,8 +2,12 @@ class MatchesController < ApplicationController
   def index
     # change this
     @matches= current_user.match_list.as_json(methods: :match_tier)
-
-    @all_pairs = [current_user.get_matched_pairs].as_json
+    matched_pairs = current_user.get_matched_pairs
+    if matched_pairs.empty?
+      @all_pairs = []
+    else
+      @all_pairs = [current_user.get_matched_pairs].as_json
+    end
 
   end
 

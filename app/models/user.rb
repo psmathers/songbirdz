@@ -79,59 +79,47 @@ class User < ApplicationRecord
 
   def preference_match
     matches= []
+    potential_matches = User.where(age: self.min_age_choice..self.max_age_choice) - [self]
 
-    rejected_sent_pairs = self.sent_pairs
-    rejected_received_pairs = self.received_pairs.where.not(accepted: nil)
-
-    not_rejected_users = []
-
-    (User.all - [self]).each do |person|
-
-      rejected_sent_pairs.each do |match|
-        if match.receiver != person
-         if !not_rejected_users.include?(person)
-           not_rejected_users << person
-         end
-        end
-      end
-
-      rejected_received_pairs.each do |match|
-        if match.sender != person
-          if !not_rejected_users.include?(person)
-            not_rejected_users << person
-          end
-        end
-      end
-    end
-    if not_rejected_users.empty?
-      potential_matches = []
-    else
-      potential_matches = not_rejected_users.select { |match| match.age >= self.min_age_choice || match.age <= self.max_age_choice }
-    end
-
-
-
-    # (User.where.not(id: self.id))
-    # binding.pry
     self.preferences.each do |pref|
       if pref.looking_for == "women"
-        matches = potential_matches.select { |match| match.gender == "female" }#(potential_matches.where(gender: "female"))
-        # matches = (matches.where)
+        matches = potential_matches.select { |match| match.gender == "female" }
       elsif pref.looking_for == "men"
-        matches = potential_matches.select { |match| match.gender == "male" } #(potential_matches.where(gender: "male"))
+        matches = potential_matches.select { |match| match.gender == "male" }
       end
     end
     matches
   end
 
-  # def match_tier=(match_tier)
-  #   @match_tier = match_tier
-  # end
+  def filter_pairs
+    rejected_sent_pairs = self.sent_pairs
+    rejected_received_pairs = self.received_pairs.where.not(accepted: nil)
+
+    not_rejected_users = self.preference_match
+
+    not_rejected_users.each do |person|
+
+      rejected_sent_pairs.each do |pair|
+        if pair.receiver == person
+          not_rejected_users -= [person]
+        end
+      end
+
+      rejected_received_pairs.each do |pair|
+        if pair.sender == person
+          not_rejected_users -= [person]
+        end
+      end
+    end
+
+    not_rejected_users
+  end
+
 
   def match_list
     matches= []
 
-    pref_matches= self.preference_match
+    pref_matches= self.filter_pairs
 
     my_tracks = self.get_tracks #now a hash with id as key and song title as value
 
