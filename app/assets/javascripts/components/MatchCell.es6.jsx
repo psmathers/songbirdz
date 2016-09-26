@@ -32,8 +32,9 @@ class MatchCell extends React.Component {
             <input type="submit" value="Like" />
             </form>
 
-            <form className="like" action="/matches/:id" method="post">
-            <input type="hidden" name="_method" value="delete" />
+            <form className="like" action= {`/matches/:${this.props.data.id}`} method="post">
+            <input type="hidden" name="_method" value="put" />
+            <input type="hidden" name="match_id" value={this.props.data.id} />
             <input type="submit" value="Dislike"/>
             </form>
           </div>
