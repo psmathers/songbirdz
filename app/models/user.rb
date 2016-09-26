@@ -80,21 +80,35 @@ class User < ApplicationRecord
   def preference_match
     matches= []
 
-
-    not_rejected_matches = Pair.where.not("(accepted = ? and sender_id = ?) or (accepted = ? and receiver_id = ?)", false, self.id, false, self.id)
+    rejected_sent_pairs = self.sent_pairs
+    rejected_received_pairs = self.received_pairs.where.not(accepted: nil)
 
     not_rejected_users = []
-    not_rejected_matches.each do |match|
-      if match.sender_id == self.id
-        not_rejected_users << match.receiver
-      elsif match.receiver_id == self.id
-        not_rejected_users << match.sender
+
+    (User.all - [self]).each do |person|
+
+      rejected_sent_pairs.each do |match|
+        if match.receiver != person
+         if !not_rejected_users.include?(person)
+           not_rejected_users << person
+         end
+        end
       end
-      match
+
+      rejected_received_pairs.each do |match|
+        if match.sender != person
+          if !not_rejected_users.include?(person)
+            not_rejected_users << person
+          end
+        end
+      end
+    end
+    if not_rejected_users.empty?
+      potential_matches = []
+    else
+      potential_matches = not_rejected_users.select { |match| match.age >= self.min_age_choice || match.age <= self.max_age_choice }
     end
 
-    potential_matches = not_rejected_users.select { |match| match.age >= self.min_age_choice || match.age <= self.max_age_choice }
-    potential_matches = potential_matches - [self]
 
 
     # (User.where.not(id: self.id))
@@ -182,8 +196,8 @@ class User < ApplicationRecord
   end
 
   def get_matched_pairs
-    sent_pairs = self.sent_pairs.where(accepted: true)
-    received_pairs = self.received_pairs.where(accepted:true)
+    sent_pairs = self.sent_pairs#.where(accepted: true)
+    received_pairs = self.received_pairs#.where(accepted:true)
 
     initial_pairs = []
 
