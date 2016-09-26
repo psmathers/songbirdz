@@ -16,21 +16,27 @@ class Landing extends React.Component {
       let userID = this.props.currentUser.uid;
       let userToken = this.props.currentUser.token;
 
-      $.ajax({
-        url: `https://api.spotify.com/v1/users/${userID}/playlists`,
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${userToken}`,
-          "Content-Type": "application/json"
-        },
-        dataType: "json",
-        data: "{ \"name\" : \"Birdlist\", \"public\" : false}"
-      })
-      .done((response) => {
-        this.setState({playlistID: response.id})
+      if (this.props.playlistID !== "") {
+        this.setState({playlistID: this.props.playlistID})
         let playlistID = this.state.playlistID;
         this.getFiveTopTracks()
-      })
+      } else {
+        $.ajax({
+          url: `https://api.spotify.com/v1/users/${userID}/playlists`,
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${userToken}`,
+            "Content-Type": "application/json"
+          },
+          dataType: "json",
+          data: "{ \"name\" : \"Birdlist\", \"public\" : false}"
+        })
+        .done((response) => {
+          this.setState({playlistID: response.id})
+          let playlistID = this.state.playlistID;
+          this.getFiveTopTracks()
+        })
+      }
     }
   }
 

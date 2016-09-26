@@ -35,9 +35,16 @@ class App extends React.Component {
       if (this.state.playlistID === "") {
         availableSpace =
         <Landing createUser
-                 currentUser={this.state.currentUser} />
+                 currentUser={this.state.currentUser}
+                 playlistID={this.state.playlistID}/>
       } else {
-        availableSpace = <Matches />
+        $.ajax({
+          url: "/matches",
+          method: "GET",
+        })
+        .done((response) => {
+          window.location.replace("/matches")
+        })
       }
     } else {
       availableSpace = <Landing />
