@@ -1,14 +1,81 @@
 class Landing extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      playlistID: "",
+      tracks: []
+    }
+    this.getFiveTopTracks = this.getFiveTopTracks.bind(this)
+    this.addFiveTopTracks = this.addFiveTopTracks.bind(this)
     this.renderProfileEditForm = this.renderProfileEditForm.bind(this)
   }
 
 
   componentDidMount() {
+    if (this.props.createUser) {
+      let userID = this.props.currentUser.uid;
+      let userToken = this.props.currentUser.token;
 
+      $.ajax({
+        url: `https://api.spotify.com/v1/users/${userID}/playlists`,
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${userToken}`,
+          "Content-Type": "application/json"
+        },
+        dataType: "json",
+        data: "{ \"name\" : \"Birdlist\", \"public\" : false}"
+      })
+      .done((response) => {
+        this.setState({playlistID: response.id})
+        let playlistID = this.state.playlistID;
+        this.getFiveTopTracks()
+      })
+    }
   }
 
+  getFiveTopTracks() {
+    let userID = this.props.currentUser.uid;
+    let userToken = this.props.currentUser.token;
+
+    {/* Get a list of current user's 5 top tracks */}
+    $.ajax({
+      url: "https://api.spotify.com/v1/me/top/tracks?limit=5",
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+      }
+    })
+    .done((response) => {
+      let trackURIs = []
+      for (var i = 0; i < response.items.length; i++) {
+        trackURIs.push(response.items[i].uri)
+      }
+      this.setState({tracks: this.state.tracks.concat(trackURIs)})
+      this.addFiveTopTracks()
+    }.bind(this))
+  }
+
+  addFiveTopTracks() {
+    if (this.state.tracks.length > 0) {
+      let tracks = this.state.tracks;
+      let userID = this.props.currentUser.uid;
+      let userToken = this.props.currentUser.token;
+      let playlistID = this.state.playlistID;
+
+      $.ajax({
+        url: `https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks?uris=${tracks[0]},${tracks[1]},${tracks[2]},${tracks[3]},${tracks[4]}`,
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${userToken}`,
+          "Content-Type": "application/json"
+        }
+      })
+      .done((response) => {
+        console.log(response)
+      })
+    }
+  }
 
   renderProfileEditForm() {
     let availableSpace;
