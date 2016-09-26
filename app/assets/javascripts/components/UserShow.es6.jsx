@@ -73,7 +73,7 @@ class UserShow extends React.Component {
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>
     return(
-      <div>
+      <div className="profile-container">
         <h2>{user.name}</h2>
         {this.showAge()}
         <p>{user.gender}</p>
