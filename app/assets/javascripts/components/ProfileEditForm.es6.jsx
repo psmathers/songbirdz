@@ -41,8 +41,15 @@ class ProfileEditForm extends React.Component {
   }
 
   render() {
-    let user = this.props.user
-    let route = `/users/${this.props.user.id}`
+    let user;
+    let route;
+    if (this.props.user) {
+      user = this.props.user;
+      route = `/users/${this.props.user.id}`
+    } else {
+      user = this.props.currentUser
+      route = `/users/${this.props.currentUser.id}`
+    }
     return(
       <div className="form-onboarding-container">
         <div className="form-container">
