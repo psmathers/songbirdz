@@ -15,7 +15,6 @@ class User < ApplicationRecord
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["info"]["name"]
-      user.name = auth["info"]["name"]
       user.token = auth["credentials"]["token"]
       user.refresh_token = auth["credentials"]["refresh_token"]
     end

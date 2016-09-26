@@ -31,6 +31,12 @@ class CurrentBirdlist extends React.Component {
     }.bind(this))
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.songsFromSearchResults.length > 0) {
+      this.setState({tracks: this.state.tracks.concat(nextProps.songsFromSearchResults)})
+    }
+  }
+
   setAnthemId() {
     // debugger
     $.ajax({
