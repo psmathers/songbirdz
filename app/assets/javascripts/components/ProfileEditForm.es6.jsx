@@ -1,6 +1,9 @@
 class ProfileEditForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      onboarding: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.renderOnboardingContainer = this.renderOnboardingContainer.bind(this)
   }
@@ -16,27 +19,23 @@ class ProfileEditForm extends React.Component {
         method: event.target.method,
         data: $(event.target).serialize()
     }).done((response) => {
+      if (this.props.onUpdate) {
         this.props.onUpdate(response)
         this.props.toggle()
-        // this.refs.age.value = ""
-        // this.refs.min.value = ""
-        // this.refs.max.value = ""
-        // this.refs.men.checked = false
-        // this.refs.women.checked = false
-        // this.refs.other.checked = false
-        // this.refs.about.value = ""
-    })
+      } else if (this.props.onboardingContainer) {
+        this.setState({onboarding: true})
+      }
+    }.bind(this))
   }
 
   renderOnboardingContainer() {
     let availableSpace;
-    // If the "this.props.current_user" has JUST finished filling out the ProfileEditForm and has NOT gone through the onboarding process yet AND
-    // this.props.onboardingContainer IS present:
-    // availableSpace = <OnboardingContainer current_user={this.props.current_user} />
-
-    // If the "this.props.current_user" is already an established user and HAS gone through the onboarding process while back AND
-    // this.props.onboardingContainer is NOT present:
-    // availableSpace = null
+    if (this.state.onboarding === true) {
+      availableSpace =
+      <OnboardingContainer current_user={this.props.current_user} />
+    } else {
+      availableSpace = null
+    }
     return availableSpace;
   }
 
