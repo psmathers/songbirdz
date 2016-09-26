@@ -32,7 +32,7 @@ class ProfileEditForm extends React.Component {
     let availableSpace;
     if (this.state.onboarding === true) {
       availableSpace =
-      <OnboardingContainer current_user={this.props.current_user} />
+      <OnboardingContainer currentUser={this.props.currentUser} />
     } else {
       availableSpace = null
     }

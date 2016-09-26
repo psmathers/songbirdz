@@ -5,8 +5,7 @@ class OnboardingContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stepsLeft: 3,
-      playlistID: ""
+      stepsLeft: 3
     }
     this.nextStep = this.nextStep.bind(this)
     this.prevStep = this.prevStep.bind(this)
@@ -16,7 +15,7 @@ class OnboardingContainer extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   nextStep() {
@@ -38,8 +37,7 @@ class OnboardingContainer extends React.Component {
     } else if (this.state.stepsLeft == 2) {
       onboardingStep = <AnthemInfo />
     } else if (this.state.stepsLeft == 1) {
-      onboardingStep = <Playlist currentUser={this.props.currentUser}
-                                 playlistID={this.state.playlistID} />
+      onboardingStep = <Playlist currentUser={this.props.currentUser} />
     }
     return onboardingStep
   }
@@ -50,7 +48,7 @@ class OnboardingContainer extends React.Component {
       leftButton = null
     } else if (this.state.stepsLeft == 2 || this.state.stepsLeft == 1) {
       leftButton = <Button prev
-                           updateStepCount={this.prevStep}/>
+                           updateStepCount={this.prevStep} />
     }
     return leftButton
   }
@@ -62,7 +60,7 @@ class OnboardingContainer extends React.Component {
                            updateStepCount={this.nextStep} />
     } else if (this.state.stepsLeft == 1) {
       leftButton = <Button finish
-                           updateStepCount={this.nextStep}/>
+                           updateStepCount={this.nextStep} />
     }
     return leftButton
   }
