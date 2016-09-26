@@ -8,7 +8,6 @@ class MatchCell extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.setState({
       match: this.props.data
     })
@@ -20,6 +19,10 @@ class MatchCell extends React.Component {
         <span><span> | </span><span>Tier: {this.props.data.match_tier}</span></span>
       )
     };
+  }
+
+  handleLike() {
+
   }
 
   render() {
@@ -36,7 +39,7 @@ class MatchCell extends React.Component {
           </div>
           <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
             <div className="buttons-container">
-            <form className="like" action="/matches" method="post">
+            <form onClick={this.handleLike} className="like" action="/matches" method="post">
             <input type="hidden" name="match_id" value={this.props.data.id} />
             <input type="submit" value="Like" />
             </form>
