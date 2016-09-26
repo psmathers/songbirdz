@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:update, :destroy, :show]
-  resources :matches, only: [:index]
+  resources :matches, only: [:index, :create, :update, :destroy]
   root to: "static#index"
 end
