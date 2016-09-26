@@ -6,6 +6,7 @@ class MatchCell extends React.Component {
     };
   }
   componentDidMount() {
+    debugger
     this.setState({
       match: this.props.data
     })
@@ -14,7 +15,11 @@ class MatchCell extends React.Component {
   render() {
     let anthemID = this.props.data.anthem_id
     return(
+
       <li className="match-cell">
+        <pre><code>
+        {JSON.stringify(this.props, null, 4)}
+      </code></pre>
         <div className="player-container">
           <div className="playlist-owner">
             {this.props.data.name} <span>| </span>
