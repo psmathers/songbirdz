@@ -22,12 +22,14 @@ class MatchCell extends React.Component {
           </div>
           <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
             <div className="buttons-container">
-            <form className="like" action="/like" method="post">
-            <input type="submit" value="Like"/>
+            <form className="like" action="/matches" method="post">
+            <input type="hidden" name="match_id" value={this.props.data.id} />
+            <input type="submit" value="Like" />
             </form>
 
-            <form className="like" action="/dislike" method="post">
-            <input type="submit" value="Disike"/>
+            <form className="like" action="/matches/:id" method="post">
+            <input type="hidden" name="_method" value="delete" />
+            <input type="submit" value="Dislike"/>
             </form>
           </div>
         </div>
