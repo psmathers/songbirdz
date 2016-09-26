@@ -31,7 +31,7 @@ class Birdlist extends React.Component {
           this.setState({playlistID: this.state.userPlaylists[i].id})
         }
       }
-    })
+    }.bind(this))
   }
 
   updateSearchResults(tracks) {
