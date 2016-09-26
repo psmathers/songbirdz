@@ -196,8 +196,8 @@ class User < ApplicationRecord
   end
 
   def get_matched_pairs
-    sent_pairs = self.sent_pairs#.where(accepted: true)
-    received_pairs = self.received_pairs#.where(accepted:true)
+    sent_pairs = self.sent_pairs.where(accepted: true)
+    received_pairs = self.received_pairs.where(accepted:true)
 
     initial_pairs = []
 
