@@ -76,10 +76,27 @@ class User < ApplicationRecord
     self.anthem_id = self.get_tracks.first[0]
   end
 
+
   def preference_match
     matches= []
-    potential_matches = User.where(age: self.min_age_choice..self.max_age_choice)
+
+
+    not_rejected_matches = Pair.where.not("(accepted = ? and sender_id = ?) or (accepted = ? and receiver_id = ?)", false, self.id, false, self.id)
+
+    not_rejected_users = []
+    not_rejected_matches.each do |match|
+      if match.sender_id == self.id
+        not_rejected_users << match.receiver
+      elsif match.receiver_id == self.id
+        not_rejected_users << match.sender
+      end
+      match
+    end
+
+    potential_matches = not_rejected_users.select { |match| match.age >= self.min_age_choice || match.age <= self.max_age_choice }
     potential_matches = potential_matches - [self]
+
+
     # (User.where.not(id: self.id))
     # binding.pry
     self.preferences.each do |pref|
