@@ -21,8 +21,13 @@ class OnboardingContainer extends React.Component {
   nextStep() {
     this.setState({stepsLeft: this.state.stepsLeft -= 1})
     if (this.state.stepsLeft == 0) {
-      // Redirect to the matches page
-      console.log("Done with the onboarding, redirect to matches page")
+      $.ajax({
+        url: "/matches",
+        method: "GET",
+      })
+      .done((response) => {
+        window.location.replace("/matches")
+      })
     }
   }
 
