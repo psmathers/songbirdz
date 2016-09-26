@@ -163,4 +163,40 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def get_matched_pairs
+    sent_pairs = self.sent_pairs.where(accepted: true)
+    received_pairs = self.received_pairs.where(accepted:true)
+
+    initial_pairs = []
+
+    sent_pairs.each do |pair|
+      initial_pairs << pair
+    end
+
+    received_pairs.each do |pair|
+      initial_pairs << pair
+    end
+
+    all_pairs = {}
+    initial_pairs.each do |pair|
+      if pair.receiver == self
+        all_pairs["id"] = pair.sender.id
+        all_pairs["name"] = pair.sender.name
+        all_pairs["age"] = pair.sender.age
+        all_pairs["gender"] = pair.sender.gender
+        all_pairs["about"] = pair.sender.about
+        all_pairs["anthem_id"] = pair.sender.anthem_id
+      else
+        all_pairs["id"] = pair.receiver.id
+        all_pairs["name"] = pair.receiver.name
+        all_pairs["age"] = pair.receiver.age
+        all_pairs["gender"] = pair.receiver.gender
+        all_pairs["about"] = pair.receiver.about
+        all_pairs["anthem_id"] = pair.receiver.anthem_id
+      end
+    end
+    all_pairs #this is a hash of users who are paired with the current_user either as sender or receiver
+  end
+
 end

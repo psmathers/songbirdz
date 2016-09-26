@@ -18,7 +18,7 @@ class Matches extends React.Component {
     return(
 
       <div>
-        <MatchesViewAll matches={this.props.matches} />
+        <MatchesViewAll matchedPairs={this.props.matchedPairs} matches={this.props.matches} />
         <ColorKey />
       </div>
     )
