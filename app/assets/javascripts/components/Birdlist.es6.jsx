@@ -4,11 +4,13 @@ class Birdlist extends React.Component {
     this.state = {
       searchResults: [],
       userPlaylists: [],
-      playlistID: ""
+      playlistID: "",
+      wantedResults: []
     };
     this.currentBirdlist = this.currentBirdlist.bind(this);
     this.birdlistSearchResults = this.birdlistSearchResults.bind(this)
     this.updateSearchResults = this.updateSearchResults.bind(this);
+    this.addSearchResult = this.addSearchResult.bind(this);
   }
 
   componentDidMount() {
@@ -36,11 +38,19 @@ class Birdlist extends React.Component {
     this.setState({searchResults: tracks})
   }
 
+  addSearchResult(trackURI) {
+    if (!this.state.wantedResults.includes(trackURI)) {
+      this.setState({wantedResults: this.state.wantedResults.concat([trackURI])})
+    }
+  }
+
   currentBirdlist() {
     let currentBirdlist
     if (this.state.playlistID !== "") {
-      currentBirdlist = <CurrentBirdlist currentUser={this.props.currentUser}
-                                         playlistID={this.state.playlistID} />
+      currentBirdlist =
+      <CurrentBirdlist currentUser={this.props.currentUser}
+                       playlistID={this.state.playlistID}
+                       songsFromSearchResults={this.state.wantedResults} />
     } else {
       currentBirdlist = null
     }
@@ -50,7 +60,9 @@ class Birdlist extends React.Component {
   birdlistSearchResults() {
     let birdlistSearchResults
     if (this.state.searchResults.length > 0) {
-      birdlistSearchResults = <birdlistSearchResults results={this.state.searchResults} />
+      birdlistSearchResults =
+      <BirdlistSearchResults results={this.state.searchResults}
+                             addSearchResult={this.addSearchResult} />
     } else {
       birdlistSearchResults = null
     }

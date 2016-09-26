@@ -16,7 +16,7 @@ class BirdsongCell extends React.Component {
     } else if (this.props.addType) {
       cell =
       <div>
-        <iframe src={`https://embed.spotify.com/?uri=${this.props.trackURI} width="300" height="80" frameborder="0" allowtransparency="true"`}></iframe>
+        <iframe src={`https://embed.spotify.com/?uri=${this.props.trackURI}`} width="300" height="80" frameBorder="0" allowTransparency="true"></iframe>
         <a onClick={this.props.addSongToBirdlist}>Add</a>
       </div>
     }
