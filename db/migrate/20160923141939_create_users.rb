@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :max_age_choice
       t.string :birdlist_id
       t.string :anthem_id
+      t.string :avatar
 
       t.timestamps
     end
