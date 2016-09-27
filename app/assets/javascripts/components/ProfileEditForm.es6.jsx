@@ -52,11 +52,12 @@ class ProfileEditForm extends React.Component {
     return(
       <div className="form-onboarding-container">
         <div className="form-container">
-          <h3>Create your profile</h3>
+          <h4>Create your profile</h4>
           <form action={route} method="post" className="edit-form" onSubmit={this.handleSubmit}>
             <input type="hidden" name="_method" value="put"/>
             <div className="form-input">
-              <input ref="age" className="age" type="number" name="age" placeholder="Your Age" defaultValue={user.age} />
+              <label for="your-age">Your Age:</label><br/>
+              <input ref="age" className="age" type="number" name="age" defaultValue={user.age} />
             </div>
 
             <div className="form-input">

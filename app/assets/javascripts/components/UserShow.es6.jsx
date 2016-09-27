@@ -58,14 +58,10 @@ class UserShow extends React.Component {
     let user = this.state.user
     if (user.min_age_choice) {
       return (
-        <div>
-        <p>Looking for:</p>
-        <p>Ages {user.min_age_choice} to {user.max_age_choice}</p>
-        </div>
+        <p>Looking for: Ages {user.min_age_choice} to {user.max_age_choice}</p>
       )
     }
   }
-
 
   render() {
     let user = this.state.user
@@ -73,15 +69,20 @@ class UserShow extends React.Component {
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>
     return(
-      <div>
-        <h2>{user.name}</h2>
-        {this.showAge()}
-        <p>{user.gender}</p>
-        {this.showMinMax()}
-        {this.showPreferences()}
-        <p>{user.about}</p>
-        <button onClick={this.toggleForm}>Edit</button>
-        {this.showForm()}
+      <div className="profile-container">
+        <div className="profile-info">
+          <div className="profile-image">Profile Image</div>
+          <h3 id="username">{user.name}</h3>
+          {this.showAge()}
+          <p>{user.gender}</p>
+          {this.showMinMax()}
+          {this.showPreferences()}
+          <p>About: {user.about}</p>
+          <div>
+            <button id="block-button" onClick={this.toggleForm}>Edit</button>
+            {this.showForm()}
+          </div>
+        </div>
       </div>
     )
   }
