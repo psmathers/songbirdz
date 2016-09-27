@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
   has_many :received_pairs, class_name: "Pair", foreign_key: :receiver_id
 
+  before_create :get_avatar
   before_update :get_birdlist_id, :get_anthem_id
 
 
@@ -17,6 +18,15 @@ class User < ApplicationRecord
       user.token = auth["credentials"]["token"]
       user.refresh_token = auth["credentials"]["refresh_token"]
     end
+  end
+
+  def get_avatar
+    url = "https://randomuser.me/api/"
+    response = Net::HTTP.get_response(URI.parse(url))
+
+    hash = JSON.parse(response.body)
+    img_link = hash["results"][0]["picture"]["large"]
+    self.avatar = img_link
   end
 
   def get_new_token
