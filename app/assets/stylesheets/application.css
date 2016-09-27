@@ -16,25 +16,53 @@
 
 
 body {
-  /*border: 1px dotted;*/
-  width: 70%;
-  margin: auto;
-  padding: 10px;
-  font-family: sans-serif;
-  font-size: 20px;
-  min-width: 400px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: #e2e1e0;
 }
+
+h1 {
+  font-size:112px;
+  font-weight:300;
+  letter-spacing:-5px;
+  line-height:128px;
+}
+h2 {
+  font-size:56px;
+  font-weight:400;
+  line-height:64px;
+}
+h3 {
+  font-size:45px;
+  font-weight:400;
+  line-height:64px;
+}
+h4 {
+  font-size:34px;
+  font-weight:400;
+  line-height:52px;
+}
+p {
+  font-size:16px;
+  font-weight:400;
+  line-height:24px;
+}
+
+/*profile-image*/
+/*.profile-image {
+  background: red;
+  border: 1px solid;
+  text-align: center;
+}*/
 
 input[type="checkbox"] {
   display: inline-block;
   width: 10px;
   height: 10px;
-  /*border: 1px solid;*/
-  /*margin: 10px;*/
   margin-right: 5px;
   margin-left: 10px;
   padding: 10px;
-  text-align: left;
+  text-align: center;
   vertical-align: top;
   background: #fff;
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
@@ -44,104 +72,71 @@ input[type="submit"] {
   width: 100%;
   height: 40px;
   font-size: 20px;
-  border-radius: 10px;
-  background-color: #cc99ff;
-  /*margin: auto;*/
+  border-radius: 5px;
+  background-color: #FF3D00;
 }
 
 ul {
   list-style: none;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
+/*profile edit form*/
 .form-onboarding-container {
-  /*border: 1px dotted;*/
   width: 50%;
-  margin: auto;
+  margin-right: 10%
   padding: 10px;
   min-width: 400px;
 }
-
-.form-container {
-  /*border: 1px solid;*/
+.profile-info .form-container {
+  padding-top: 5px;
   width: 100%;
- /* margin: auto;*/
-  /*padding: 5px;*/
-}
-
-.form-container h3 {
-  /*border: 1px solid;*/
-  width: 65%;
   margin: auto;
-  padding: 5px;
-  text-align: center;
-  border-bottom: 1px dotted;
 }
-
-.edit-form {
-  /*border: 1px dotted;*/
-  margin: 5px;
-  /*text-align: center*/
-}
-
-.form-input {
-  /*border: 1px dotted;*/
-  /*text-align: center;*/
-  margin: auto;
+.form-container h4 {
+  margin-top: 15px;
+  border-bottom: .5px solid;
   margin-bottom: 10px;
-  width: 80%;
 }
+.form-input {
+  margin-bottom: 10px;
 
+}
 .form-input label {
+  vertical-align:sub;
   color: #ADADAD;
 }
-
 .form-input .check {
   color: black;
 }
-
 .form-input .age {
-  width: 100%;
-  height: 40px;
-  font-size: 20px;
+  height: 20px;
+  font-size: 14px;
 }
-
 .form-input textarea {
-  width: 99%;
+  width: 95%;
   height: 120px;
-  font-size: 20px;
+  font-size: 14px;
+  padding: 8px;
 }
-
 .form-input select {
-  width: 100%;
-  height: 40px;
-  font-size: 20px;
+  width: 99%;
+  height: 24px;
+  font-size: 14px;
 }
-
 .form-input option {
-  /*text-align: center;*/
 }
-
 .min-max {
   display: inline-block;
   vertical-align: top;
   width: 45%;
-  height: 40px;
-  font-size: 20px;
-  /*margin-left: 4px;*/
+  height: 20px;
+  font-size: 14px;
 }
-
 #btwn {
   display: inline-block;
   vertical-align: top;
-  margin-top: 10px;
-  margin-right: 6px;
-  margin-left: 6px;
+  margin: 6px;
 }
 
 
@@ -229,11 +224,48 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* user show */
 .profile-container {
-  position: sticky;
-  /*width: 50%;
-  margin: auto;
-  padding: 10px;*/
+  background: url('') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.7;
+  position: relative;
+  margin-top: 150px;
 }
+.profile-info {
+  width: 400px;
+  margin: auto;
+  background: ghostwhite;
+  padding: 200px 30px 0px 30px;
+  font-size: 14px;
+  border: 3px solid;
+  border-image: linear-gradient(#FF3D00, #9575CD) 10;
+}
+.profile-info #username {
+  border-bottom: .5px solid;
+  margin-bottom: 5px;
+}
+.profile-info p {
+  text-indent: 5px;
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+#block-button {
+  border: transparent;
+  background: transparent;
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 8px;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(#FF3D00, #9575CD) 10;
+  font-size: 14px;
+}
+
+
 
 /* navbar */
 .navbar ul {
@@ -245,20 +277,21 @@ input[type=number]::-webkit-outer-spin-button {
     list-style-type: none;
     margin: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #212121;
     font-size: 14px;
     font-family: "Open Sans", sans-serif;
+    font-weight: 100;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(#9575CD, #FF3D00) 30;
 }
 .navbar li {
     float: left;
 }
 .navbar li a {
     display: block;
-    color: white;
-    text-align: center;
+    color: ghostwhite;
     padding: 14px 16px;
     text-decoration: none;
-    color: #FFE0B2;
 }
 /* Change the link color to #111 (black) on hover */
 .navbar li a:hover {
