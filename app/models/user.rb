@@ -208,22 +208,25 @@ class User < ApplicationRecord
       initial_pairs << pair
     end
 
-    all_pairs = {}
+    all_pairs = []
     initial_pairs.each do |pair|
+      pair_hash ={}
       if pair.receiver == self
-        all_pairs["id"] = pair.sender.id
-        all_pairs["name"] = pair.sender.name
-        all_pairs["age"] = pair.sender.age
-        all_pairs["gender"] = pair.sender.gender
-        all_pairs["about"] = pair.sender.about
-        all_pairs["anthem_id"] = pair.sender.anthem_id
+        pair_hash["id"] = pair.sender.id
+        pair_hash["name"] = pair.sender.name
+        pair_hash["age"] = pair.sender.age
+        pair_hash["gender"] = pair.sender.gender
+        pair_hash["about"] = pair.sender.about
+        pair_hash["anthem_id"] = pair.sender.anthem_id
+        all_pairs << pair_hash
       else
-        all_pairs["id"] = pair.receiver.id
-        all_pairs["name"] = pair.receiver.name
-        all_pairs["age"] = pair.receiver.age
-        all_pairs["gender"] = pair.receiver.gender
-        all_pairs["about"] = pair.receiver.about
-        all_pairs["anthem_id"] = pair.receiver.anthem_id
+        pair_hash["id"] = pair.receiver.id
+        pair_hash["name"] = pair.receiver.name
+        pair_hash["age"] = pair.receiver.age
+        pair_hash["gender"] = pair.receiver.gender
+        pair_hash["about"] = pair.receiver.about
+        pair_hash["anthem_id"] = pair.receiver.anthem_id
+        all_pairs << pair_hash
       end
     end
     all_pairs #this is a hash of users who are paired with the current_user either as sender or receiver
