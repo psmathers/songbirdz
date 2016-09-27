@@ -24,7 +24,8 @@ class ChatSidebar extends React.Component {
             return(<ChatCell toggleChat={toggleWithChat}
                              chatIndexOpen={this.state.chatIndexOpen}
                              pair={pair}
-                             key={index} />)
+                             key={index}
+                             index={index}/> )
           })
         }
       </div>

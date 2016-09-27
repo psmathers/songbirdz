@@ -81,16 +81,18 @@ class MatchesViewAll extends React.Component {
   render() {
     return(
       <div>
+        <div>
+          <ul>
+            {this.showMatchedPairs()}
+          </ul>
+          <ul>
+          {this.showMatches()}
+          </ul>
+        </div>
+        <div>
         <ChatSidebar matchedPairs={this.state.matchedPairs} />
+        </div>
       </div>
-      <div>
-        <ul>
-          {this.showMatchedPairs()}
-        </ul>
-       <ul>
-        {this.showMatches()}
-       </ul>
-       </div>
     )
   }
 }
