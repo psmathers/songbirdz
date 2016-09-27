@@ -10,9 +10,12 @@ class MatchCell extends React.Component {
     this.toggleDropDown = this.toggleDropDown.bind(this)
     this.showDropDown= this.showDropDown.bind(this)
     this.showLikes= this.showLikes.bind(this)
+    this.handleLike = this.handleLike.bind(this)
+    this.handleDislike = this.handleDislike.bind(this)
   }
 
   componentDidMount() {
+    // debugger
     this.setState({
       match: this.props.data,
     })
@@ -53,30 +56,47 @@ class MatchCell extends React.Component {
     };
   }
 
+  handleLike(event) {
+    event.preventDefault()
+    $.ajax({
+      url: event.target.action,
+      method: event.target.method,
+      data: $(event.target).serialize()
+    }).done((response) => {
+        this.props.onUpdate(response)
+    })
+  }
 
-  handleLike() {
-
+  handleDislike(event) {
+    event.preventDefault()
+    $.ajax({
+      url: event.target.action,
+      method: event.target.method,
+      data: $(event.target).serialize()
+    }).done((response) => {
+        this.props.onDislike(response)
+    })
   }
 
   showLikes(){
     if (this.props.data.match_tier) {
 
       return (
-      <div className="buttons-container">
-      <form onClick={this.handleLike} className="like" action="/matches" method="post">
-      <input type="hidden" name="match_id" value={this.props.data.id} />
-      <input type="submit" value="Like" />
-      </form>
+        <div className="buttons-container">
+          <form onSubmit={this.handleLike} className="like" action="/matches" method="post">
+          <input type="hidden" name="match_id" value={this.props.data.id} />
+          <input type="submit" value="Like" />
+          </form>
 
-      <form className="like" action= {`/matches/:${this.props.data.id}`} method="post">
-      <input type="hidden" name="_method" value="put" />
-      <input type="hidden" name="match_id" value={this.props.data.id} />
-      <input type="submit" value="Dislike"/>
-      </form>
-    </div>)
+          <form onSubmit={this.handleDislike} className="like" action= {`/matches/:${this.props.data.id}`} method="post">
+          <input type="hidden" name="_method" value="put" />
+          <input type="hidden" name="match_id" value={this.props.data.id} />
+          <input type="submit" value="Dislike"/>
+          </form>
+        </div>
+      )
     };
   }
-
 
   render() {
     let anthemID = this.props.data.anthem_id
