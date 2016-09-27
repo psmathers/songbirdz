@@ -19,6 +19,14 @@ body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
   background: #e2e1e0;
+
+}
+
+#yield {
+  margin-top: 30px;
+  border: 1px solid;
+  width: 90%;
+  margin: auto;
 }
 
 h1 {
@@ -143,33 +151,48 @@ ul {
 
 /* richie css changes */
   .push-me {
-    width: 100%;
+    width: 30%;
     height: 40px;
     font-size: 20px;
-    border-radius: 10px;
-    background-color: #cc99ff;
+    border-radius: 5px;
+    background-color: #FF3D00;
+    margin-top: 0;
   }
   .match-cell {
     margin-bottom: 20px;
     border: 1px solid grey;
   }
   .player-container {
-    width: 350px;
+    border: 1px dashed;
+    width: 40%;
+    margin-bottom: 0;
     display: inline-block;
+    padding: 10px;
   }
   .playlist-owner {
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 300px;
+    width: 68%;
     text-align: center;
-    background-color: #212121;
+    background-color: #262626;
     color: white;
+    /*margin: auto;*/
   }
+
+  .iframe {
+    /*margin-left: 6.95%;*/
+    /*width: 70%;*/
+    /*margin: auto;*/
+  }
+
+
   .dropdown {
+    border: 1px dotted;
     vertical-align: top;
     padding: 10px;
     width: 550px;
     display: inline-block;
+    margin-top: 0;
   }
   .prof-pic {
     height: 150px;
@@ -268,6 +291,10 @@ ul {
 
 
 /* navbar */
+
+.navbar {
+  margin-bottom: 50px;
+}
 .navbar ul {
     position: fixed;
     top: 0;
