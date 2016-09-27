@@ -59,10 +59,10 @@ class Landing extends React.Component {
         trackURIs.push(response.items[i].uri)
       }
       this.setState({tracks: this.state.tracks.concat(trackURIs)})
-      if (this.state.tracks.length < 0) {
+      this.addFiveTopTracks()
+      if (this.state.tracks.length === 0) {
         this.getTopBeatlesTracks()
       }
-      this.addFiveTopTracks()
     }.bind(this))
   }
 
@@ -77,6 +77,7 @@ class Landing extends React.Component {
         trackURIs.push(response.tracks[i].uri)
       }
       this.setState({tracks: this.state.tracks.concat(trackURIs)})
+      this.addFiveTopTracks()
     }.bind(this))
   }
 
