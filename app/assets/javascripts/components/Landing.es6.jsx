@@ -7,6 +7,7 @@ class Landing extends React.Component {
     }
     this.getFiveTopTracks = this.getFiveTopTracks.bind(this)
     this.addFiveTopTracks = this.addFiveTopTracks.bind(this)
+    this.getTopBeatlesTracks = this.getTopBeatlesTracks.bind(this)
     this.renderProfileEditForm = this.renderProfileEditForm.bind(this)
   }
 
@@ -59,19 +60,23 @@ class Landing extends React.Component {
       }
       this.setState({tracks: this.state.tracks.concat(trackURIs)})
       if (this.state.tracks.length < 0) {
-        $.ajax({
-          url: "https://api.spotify.com/v1/artists/3WrFJ7ztbogyGnTHbHJFl2/top-tracks?country=US",
-          method: "GET"
-        })
-        .done((response) => {
-          let trackURIs = []
-          for (var i = 0; i < response.tracks.length; i++) {
-            trackURIs.push(response.tracks[i].uri)
-          }
-          this.setState({tracks: this.state.tracks.concat(trackURIs)})
-        }.bind(this))
+        this.getTopBeatlesTracks()
       }
       this.addFiveTopTracks()
+    }.bind(this))
+  }
+
+  getTopBeatlesTracks() {
+    $.ajax({
+      url: "https://api.spotify.com/v1/artists/3WrFJ7ztbogyGnTHbHJFl2/top-tracks?country=US",
+      method: "GET"
+    })
+    .done((response) => {
+      let trackURIs = []
+      for (var i = 0; i < response.tracks.length; i++) {
+        trackURIs.push(response.tracks[i].uri)
+      }
+      this.setState({tracks: this.state.tracks.concat(trackURIs)})
     }.bind(this))
   }
 
