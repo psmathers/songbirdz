@@ -15,7 +15,7 @@ class OnboardingContainer extends React.Component {
   }
 
   componentDidMount() {
-
+    
   }
 
   nextStep() {
