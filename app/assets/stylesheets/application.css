@@ -147,6 +147,13 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 /* richie css changes */
+  .push-me {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #cc99ff;
+  }
   .match-cell {
     margin-bottom: 20px;
     border: 1px solid grey;
