@@ -25,9 +25,19 @@ class MatchesController < ApplicationController
       else
         # errors
       end
-    elsif received_pair
+    elsif received_pair && received_pair.accepted == nil
       received_pair.update(accepted: true)
-      redirect_to root_url
+      if request.xhr?
+        render :json => {pair: received_pair}.as_json(include: [:sender, :receiver])
+      else
+        redirect_to root_url
+      end
+    else
+      if request.xhr?
+        render :json => {pair: received_pair}.as_json(include: [:sender, :receiver])
+      else
+        redirect_to root_url
+      end
     end
   end
 
@@ -46,7 +56,11 @@ class MatchesController < ApplicationController
       end
     elsif received_pair
       received_pair.update(accepted: false)
-      redirect_to root_url
+      if request.xhr?
+        render :json => {pair: received_pair}.as_json(include: [:sender, :receiver])
+      else
+        redirect_to root_url
+      end
     end
   end
 
