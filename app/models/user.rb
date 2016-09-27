@@ -6,8 +6,7 @@ class User < ApplicationRecord
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
   has_many :received_pairs, class_name: "Pair", foreign_key: :receiver_id
 
-  before_update :get_birdlist_id
-  before_update :get_anthem_id
+  before_update :get_birdlist_id, :get_anthem_id
 
 
   def self.create_with_omniauth(auth)
@@ -52,6 +51,7 @@ class User < ApplicationRecord
     end
 
     self.birdlist_id = playlist_obj["id"]
+    # self.save
   end
 
   def get_tracks
@@ -74,6 +74,7 @@ class User < ApplicationRecord
 
   def get_anthem_id
     self.anthem_id = self.get_tracks.first[0]
+    # self.save
   end
 
 

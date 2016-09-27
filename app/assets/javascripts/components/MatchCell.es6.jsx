@@ -110,11 +110,13 @@ class MatchCell extends React.Component {
             {this.props.data.name}
             {this.showTier()}
           </div>
-          <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+          <div className="iframe">
+           <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+          </div>
           {this.showLikes()}
-        </div>
+        </div><br/>
         <div className="dropdown">
-          {this.showDropDownButton()}
+         {this.showDropDownButton()}
           {this.showDropDown()}
         </div>
       </li>
