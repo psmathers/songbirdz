@@ -58,6 +58,19 @@ class Landing extends React.Component {
         trackURIs.push(response.items[i].uri)
       }
       this.setState({tracks: this.state.tracks.concat(trackURIs)})
+      if (this.state.tracks.length < 0) {
+        $.ajax({
+          url: "https://api.spotify.com/v1/artists/3WrFJ7ztbogyGnTHbHJFl2/top-tracks?country=US",
+          method: "GET"
+        })
+        .done((response) => {
+          let trackURIs = []
+          for (var i = 0; i < response.tracks.length; i++) {
+            trackURIs.push(response.tracks[i].uri)
+          }
+          this.setState({tracks: this.state.tracks.concat(trackURIs)})
+        }.bind(this))
+      }
       this.addFiveTopTracks()
     }.bind(this))
   }
