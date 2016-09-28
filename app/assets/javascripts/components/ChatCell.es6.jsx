@@ -12,7 +12,7 @@ class ChatCell extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `/chats/${this.props.pair.id}/messages`,
+      url: `/chats/${this.props.pair.chat_id}/messages`,
       method: "GET"
     })
     .done((response) => {
