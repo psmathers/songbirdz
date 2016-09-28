@@ -82,7 +82,7 @@ class MatchCell extends React.Component {
     if (this.props.data.match_tier) {
 
       return (
-        <div className="buttons-container">
+        <div id= "tier-1" className="buttons-container">
           <form onSubmit={this.handleLike} className="like" action="/matches" method="post">
           <input type="hidden" name="match_id" value={this.props.data.id} />
           <input type="submit" value="Like" />
@@ -106,7 +106,7 @@ class MatchCell extends React.Component {
     return(
       <li className="match-cell">
         <div className="player-container">
-          <div className="playlist-owner">
+          <div id="tier-1" className="playlist-owner">
             {this.props.data.name}
             {this.showTier()}
           </div>
