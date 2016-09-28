@@ -42,7 +42,7 @@ class MatchCell extends React.Component {
   showDropDown() {
     // debugger
     if (this.state.formPresent) {
-      return(<DropDown match={this.props.data} />)
+      return(<DropDown userImg={this.props.userImg} match={this.props.data} />)
     } else {
       return null
     }

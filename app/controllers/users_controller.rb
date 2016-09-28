@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   if params[:user] != nil
     user.update(user_params)
   else
-    binding.pry
     user.update(age: params[:age], gender: params[:gender], about: params[:about], min_age_choice: params[:minAge], max_age_choice: params[:maxAge])
     user.update_preferences(params)
   end
