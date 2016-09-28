@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
     if matched_pairs.empty?
       @all_pairs = []
     else
-      @all_pairs = [current_user.get_matched_pairs].as_json
+      @all_pairs = current_user.get_matched_pairs.as_json
     end
 
   end

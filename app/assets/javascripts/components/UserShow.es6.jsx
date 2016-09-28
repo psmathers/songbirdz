@@ -70,28 +70,25 @@ class UserShow extends React.Component {
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>
     return(
-
       <div>
-      <div className="profile-container">
-        <div className="profile-info">
-          <div className="profile-image">
-            <img src={user_img} />
+        <div className="profile-container">
+          <div className="profile-info">
+            <div className="profile-image">
+              <img src={user_img} />
+            </div>
+            <h3 id="username">{user.name}</h3>
+            {this.showAge()}
+            <p>{user.gender}</p>
+            {this.showMinMax()}
+            {this.showPreferences()}
+            <p>About: {user.about}</p>
+            <div id="form-toggle">
+              <button id="block-button" onClick={this.toggleForm}>Edit</button>
+              {this.showForm()}
+            </div>
           </div>
-          <h3 id="username">{user.name}</h3>
-          {this.showAge()}
-          <p>{user.gender}</p>
-          {this.showMinMax()}
-          {this.showPreferences()}
-          <p>About: {user.about}</p>
-          <div>
-            <button id="block-button" onClick={this.toggleForm}>Edit</button>
-            {this.showForm()}
-          </div>
-        </div>
-        <div>
           <Birdlist currentUser={user}/>
         </div>
-      </div>
       </div>
     )
   }

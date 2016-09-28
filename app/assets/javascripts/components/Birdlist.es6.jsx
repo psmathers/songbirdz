@@ -71,7 +71,7 @@ class Birdlist extends React.Component {
 
   render() {
     return(
-      <div>
+      <div id="birdlist">
         {this.currentBirdlist()}
         <BirdlistSearchBar onSearch={this.updateSearchResults} />
         {this.birdlistSearchResults()}

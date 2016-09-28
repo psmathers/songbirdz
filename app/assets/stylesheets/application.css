@@ -17,7 +17,7 @@
 
 body {
   position: relative;
-  margin-top: 150px;
+  margin-top: 50px;
   width: 100%;
   font-family: 'Roboto', sans-serif;
   background: #e2e1e0;
@@ -25,9 +25,28 @@ body {
 
 #yield {
   margin-top: 30px;
-  border: 1px solid;
-  width: 90%;
+  width: 70%;
   margin: auto;
+}
+
+#title {
+  border: 1px solid;
+  /*padding-bottom: 5%;*/
+  margin: auto;
+  width: 70%;
+  min-width: 400px;
+}
+
+#title h2 {
+  margin: 0;
+  padding: 0;
+
+}
+
+#title p {
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
 }
 
 h1 {
@@ -98,7 +117,7 @@ ul {
 /*profile edit form*/
 .form-onboarding-container {
   width: 50%;
-  margin-right: 10%
+  margin: auto;
   padding: 10px;
   min-width: 400px;
 }
@@ -285,7 +304,7 @@ ul {
 
 /* user show */
 .profile-container {
-  /*background: url('') no-repeat center center fixed;
+/*  background: url('') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -294,15 +313,21 @@ ul {
   position: relative;
   margin-top: 150px;*/
 }
+
 .profile-info {
-  width: 400px;
-  margin: auto;
+  /*margin:auto;*/
+  width: 45%;
+  min-width: 400px;
+  margin-right: 10px;
+  display:inline-block;
+  vertical-align: top;
   background: ghostwhite;
-  padding: 200px 30px 0px 30px;
+  padding: 30px 10px 99px 10px;
   font-size: 14px;
   border: 3px solid;
   border-image: linear-gradient(#FF3D00, #9575CD) 10;
 }
+
 .profile-info #username {
   border-bottom: .5px solid;
   margin-bottom: 5px;
@@ -326,12 +351,29 @@ ul {
   font-size: 14px;
 }
 
-
+/*Birdlist*/
+#birdlist {
+  padding: 30px 10px 30px 10px;
+  min-width: 400px;
+  border: 3px solid;
+  border-image: linear-gradient(#FF3D00, #9575CD) 10;
+  background: ghostwhite;
+  width: 45%;
+  /*margin-top: 10%;*/
+  display: inline-block;
+  vertical-align: top;
+}
 
 /* navbar */
 
+/* navbar */
+#hidden {
+  color: #212121;
+}
+
 .navbar {
   margin-bottom: 50px;
+
 }
 .navbar ul {
     position: fixed;
@@ -348,9 +390,10 @@ ul {
     font-weight: 100;
     border-bottom: 2px solid;
     border-image: linear-gradient(#9575CD, #FF3D00) 30;
+    text-align: right;
 }
 .navbar li {
-    float: left;
+    display: inline-block;
 }
 .navbar li a {
     display: block;

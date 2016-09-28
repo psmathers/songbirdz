@@ -9,9 +9,9 @@ class BirdsongCell extends React.Component {
     if (this.props.deleteType) {
       cell =
       <div>
-        <a onClick={this.props.setAnthem}>Anthem</a>
+        <a className="alter-list-link" onClick={this.props.setAnthem}>Anthem</a>
         <iframe src={`https://embed.spotify.com/?uri=${this.props.trackURI}`} width="300" height="80" frameBorder="0" allowTransparency="true"></iframe>
-        <a onClick={this.props.deleteSongFromBirdlist}>Delete</a>
+        <a className="alter-list-link" onClick={this.props.deleteSongFromBirdlist}>Delete</a>
       </div>
     } else if (this.props.addType) {
       cell =
