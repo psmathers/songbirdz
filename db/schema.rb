@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923142125) do
+ActiveRecord::Schema.define(version: 20160927194752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "pair_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "chat_id",    null: false
+    t.integer  "user_id",    null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pairs", force: :cascade do |t|
     t.integer  "sender_id",   null: false
@@ -49,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160923142125) do
     t.integer  "max_age_choice"
     t.string   "birdlist_id"
     t.string   "anthem_id"
+    t.string   "avatar"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
