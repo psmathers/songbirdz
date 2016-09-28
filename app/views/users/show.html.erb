@@ -1,11 +1,12 @@
-<%= react_component 'UserShow', user: @user, userImg: current_user.image.url %>
+<%= react_component 'UserShow', user: @user, userImg: "/system/users/images/000/000/001/original/bearpic.jpeg?1475076059" %>
 
-<%= form_for :user, url: "/users/#{current_user.id}", html: { multipart: true } do |f| %>
+<%= form_for :user, url: "/users/#{current_user.id}", html: { multipart: true, id: "img_form" } do |f| %>
   <input type="hidden" name="_method" value="put">
   <input type="file" name="user[image]" id="user_image" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-  <label for="user_image"><span>Choose a file</span></label>
-  <input type="submit" id="image_submit" value="Create">
+  <label for="user_image"><span>Click to upload image</span></label>
+  <input type="submit" id="image_submit" value="^">
 <% end %>
+
 
 <script type="text/javascript">
   var inputs = document.querySelectorAll( '.inputfile' );
@@ -30,3 +31,6 @@ Array.prototype.forEach.call( inputs, function( input )
   });
 });
 </script>
+
+
+
