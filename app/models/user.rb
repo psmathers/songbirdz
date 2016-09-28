@@ -10,8 +10,8 @@ class User < ApplicationRecord
   # before_create :get_avatar
   before_update :get_birdlist_id, :get_anthem_id
 
-  validates_attachment :image,
-    content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
+  validates_attachment :image, presence: true,
+      content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
 
 
   def self.create_with_omniauth(auth)
