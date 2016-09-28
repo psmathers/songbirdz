@@ -27,10 +27,10 @@ class BirdlistSearchBar extends React.Component {
 
   render() {
     return(
-      <form id="search" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Track to add to Birdlist" ref="title"/>
-        <input type="submit" value="Search"/>
-      </form>
+        <form id="search" onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Track to add to Birdlist" ref="title"/>
+          <input type="submit" value="Search"/>
+        </form>
     )
   }
 }
