@@ -81,7 +81,7 @@ class UserShow extends React.Component {
             <p>{user.gender}</p>
             {this.showMinMax()}
             {this.showPreferences()}
-            <p>About: {user.about}</p>
+            <p>{`About: ${user.about}`}</p>
             <div id="form-toggle">
               <button id="block-button" onClick={this.toggleForm}>Edit</button>
               {this.showForm()}

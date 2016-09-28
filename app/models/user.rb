@@ -5,14 +5,15 @@ class User < ApplicationRecord
   has_many :preferences, through: :user_preferences
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
   has_many :received_pairs, class_name: "Pair", foreign_key: :receiver_id
-  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
+  # has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
 
   # before_create :get_avatar
   before_update :get_birdlist_id, :get_anthem_id
 
-  validates_attachment :image, presence: true,
-      content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
+  # validates_attachment :image, presence: true,
+  #     content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
 
+# <%= current_user.image.url %>
 
   def self.create_with_omniauth(auth)
     create! do |user|

@@ -18,3 +18,4 @@
 
 # Ignore secrets yml file
 /config/secrets.yml
+/config/local_env.yml

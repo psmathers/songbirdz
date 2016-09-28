@@ -16,7 +16,7 @@
 
 
 body {
-  position: relative;
+  /*position: relative;*/
   margin-top: 50px;
   width: 100%;
   font-family: 'Roboto', sans-serif;
@@ -27,13 +27,16 @@ body {
 
 
 #hidden {
-  padding-bottom: 10%
+  padding-bottom: 5%
 }
 
 #yield {
-  margin-top: 30px;
+  /*border: 1px solid;*/
+  /*margin-top: 30px;*/
   width: 70%;
   margin: auto;
+  max-width: 1000px;
+  min-width: 980px;
 }
 
 #title {
@@ -150,15 +153,17 @@ ul {
 
 label[for=user_image] {
     font-size: 1.25em;
-    font-weight: 700;
-    color: black;
+    font-weight: 400;
+    color: grey;
     background-color: ghostwhite;
     display: inline-block;
     border-radius: 2px;
     padding: 2px;
-    border: 1px solid;
-    width: 170px;
+    /*border: 1px solid;*/
+    width: 200px;
+    height: 25px;
     float: left;
+    padding-bottom: 3px;
 }
 
 label[for=user_image] {
@@ -170,14 +175,14 @@ label[for=user_image] * {
 }
 
 #image_submit {
-  /*border-radius: 20px;*/
+  border-radius: none;
   width: 30px;
   /*border: 1px solid black;*/
   margin-bottom: 20px;
   float: left;
   font-weight: bold;
   font-size: 20px;
-  padding-top: 7px;
+  padding-top: 7px
 }
 
 
@@ -374,28 +379,24 @@ label[for=user_image] * {
 
 /* user show */
 .profile-container {
-/*  background: url('') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.8;
-  position: relative;
-  margin-top: 150px;*/
+  width: 100%;
 }
 
 .profile-info {
   /*margin:auto;*/
-  width: 525px;
+  width: 450px;
   min-width: 400px;
-  margin-right: 10px;
+  margin-right: 0px;
+  margin-bottom: 10px;
   display:inline-block;
   vertical-align: top;
   background: ghostwhite;
-  padding: 30px 10px 222px 10px;
+  padding: 30px 15px 30px 10px;
   font-size: 14px;
-  border: 3px solid;
-  border-image: linear-gradient(#FF3D00, #9575CD) 10;
+/*  border: 3px solid;
+  border-image: linear-gradient(#FF3D00, #9575CD) 10;*/
+  height: 600px;
+  /*float: left;*/
 }
 
 .profile-info #username {
@@ -404,7 +405,7 @@ label[for=user_image] * {
 }
 .profile-info p {
   text-indent: 5px;
-  font-size: 14px;
+  font-size: 20px;
   margin-top: 0px;
   margin-bottom: 2px;
 }
@@ -423,15 +424,19 @@ label[for=user_image] * {
 
 /*Birdlist*/
 #birdlist {
-  padding: 30px 10px 30px 10px;
-  min-width: 400px;
-  border: 3px solid;
-  border-image: linear-gradient(#FF3D00, #9575CD) 10;
+  padding: 30px 0px 30px 40px;
+  /*min-width: 450px;*/
+  /*border: 3px solid;*/
+  /*border-image: linear-gradient(#FF3D00, #9575CD) 10;*/
   background: ghostwhite;
-  width: 525px;
-  /*margin-top: 10%;*/
+  width: 440px;
+  left: 70%;
+  top: 0;
   display: inline-block;
   vertical-align: top;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 600px;
 }
 #birdlist #playlist-name {
   display: block;
@@ -444,14 +449,16 @@ label[for=user_image] * {
 #current-list {
   /*border: 1px solid;*/
   margin: 0;
-  padding-left: 10%;
+  /*padding-right: -10%;*/
+
 }
 
 
 #search {
   /*border: 1px solid;*/
   width: 60%;
-  margin: auto;
+  margin:auto;
+  margin-right: 30%;
 }
 
 #search input {
@@ -466,6 +473,7 @@ label[for=user_image] * {
   width: 306.5px;
   height: 30px;
   margin: auto;
+  /*margin-right: 30px;*/
   font-size: 20px;
   margin-bottom: 0px;
   cursor: pointer;
@@ -482,11 +490,11 @@ label[for=user_image] * {
 }
 
 .cell {
-  border: 1px solid;
+  /*border: 1px solid;*/
   max-width: 300px;
   min-width: 300px;
   margin: auto;
-  margin-right: 115px;
+  margin-right: 80px;
   margin-bottom: 10px;
   background-color:  #292929;
   /*^^^this is as close to the exact color of the spotify player as I''ve found - do not change^^^*/
