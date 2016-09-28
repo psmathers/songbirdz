@@ -49,7 +49,6 @@ class MatchesViewAll extends React.Component {
   }
 
   destroyPairs(response) {
-    debugger
     if (this.props.user.id == response.pair.receiver.id) {
       newPair = response.pair.sender
     } else {
@@ -72,7 +71,7 @@ class MatchesViewAll extends React.Component {
   showMatchedPairs() {
     if (this.state.matchedPairs.length > 0) {
       return (this.state.matchedPairs.map((match,idx) =>{
-           return (<MatchCell key={idx} data={match} />)
+           return (<MatchCell userImg={this.props.userImg} key={idx} data={match} />)
          })
       )
     };
