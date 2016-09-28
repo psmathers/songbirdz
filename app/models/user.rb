@@ -5,9 +5,13 @@ class User < ApplicationRecord
   has_many :preferences, through: :user_preferences
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
   has_many :received_pairs, class_name: "Pair", foreign_key: :receiver_id
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
 
-  before_create :get_avatar
+  # before_create :get_avatar
   before_update :get_birdlist_id, :get_anthem_id
+
+  validates_attachment :image,
+    content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
 
 
   def self.create_with_omniauth(auth)
@@ -20,14 +24,14 @@ class User < ApplicationRecord
     end
   end
 
-  def get_avatar
-    url = "https://randomuser.me/api/"
-    response = Net::HTTP.get_response(URI.parse(url))
+  # def get_avatar
+  #   url = "https://randomuser.me/api/"
+  #   response = Net::HTTP.get_response(URI.parse(url))
 
-    hash = JSON.parse(response.body)
-    img_link = hash["results"][0]["picture"]["large"]
-    self.avatar = img_link
-  end
+  #   hash = JSON.parse(response.body)
+  #   img_link = hash["results"][0]["picture"]["large"]
+  #   self.avatar = img_link
+  # end
 
   def get_new_token
     uri = URI.parse("https://accounts.spotify.com/api/token")
