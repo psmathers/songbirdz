@@ -32,8 +32,11 @@ class ChatCell extends React.Component {
       <div>
         <div>
           {
-            this.state.messages.map((message) => {
-              return(<MessageCell message={message} />)
+            this.state.messages.map((message, index) => {
+              return(
+                <MessageCell key={index}
+                             message={message} />
+              )
             })
           }
         </div>
@@ -55,14 +58,16 @@ class ChatCell extends React.Component {
   }
 
   handleSubmit(event) {
-    const message = this.refs.message.value;
     event.preventDefault();
+
+    const message = this.refs.message.value;
+    const chatID = this.props.pair.id;
+
     $.ajax({
       url: `/chats/${chatID}/messages`,
       method: "POST",
       data: {
         message: {
-          user_id: someUserID.username,
           chat_id: chatID,
           content: message
         }
@@ -70,13 +75,13 @@ class ChatCell extends React.Component {
     })
     .done((response) => {
       this.setState({ messages: this.state.messages.concat(response.content) })
-    })
+    }.bind(this))
   }
 
   render() {
     return(
       <div>
-        <button onClick={this.toggleChatVisibility}>Chat with batgirl</button>
+        <button onClick={this.toggleChatVisibility}>Chat with {this.props.pair.name}</button>
         {this.showChat()}
       </div>
     )
