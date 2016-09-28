@@ -27,6 +27,7 @@ class MatchesController < ApplicationController
       end
     elsif received_pair && received_pair.accepted == nil
       received_pair.update(accepted: true)
+      received_pair.chats.create(pair_id: received_pair.id)
       if request.xhr?
         render :json => {pair: received_pair}.as_json(include: [:sender, :receiver])
       else

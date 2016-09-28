@@ -11,13 +11,17 @@ class ChatCell extends React.Component {
   }
 
   componentDidMount() {
-    // $.ajax({
-    //   url: `/chats/${chatID}/messages`,
-    //   method: "GET"
-    // })
-    // .done((response) => {
-    //   this.setState({messages: response.content})
-    // })
+    $.ajax({
+      url: `/chats/${this.props.pair.chat_id}/messages`,
+      method: "GET"
+    })
+    .done((response) => {
+      let messages = []
+      for (var i = 0; i < response.length; i++) {
+        messages.push({name: response[i].user.name, text: response[i].content})
+      }
+      this.setState({messages: messages})
+    })
   }
 
   toggleChatVisibility() {
@@ -32,8 +36,11 @@ class ChatCell extends React.Component {
       <div>
         <div>
           {
-            this.state.messages.map((message) => {
-              return(<MessageCell message={message} />)
+            this.state.messages.map((message, index) => {
+              return(
+                <MessageCell key={index}
+                             message={message} />
+              )
             })
           }
         </div>
@@ -55,28 +62,29 @@ class ChatCell extends React.Component {
   }
 
   handleSubmit(event) {
-    const message = this.refs.message.value;
     event.preventDefault();
+
+    const message = this.refs.message.value;
+
     $.ajax({
-      url: `/chats/${chatID}/messages`,
+      url: `/chats/${this.props.pair.chat_id}/messages`,
       method: "POST",
       data: {
         message: {
-          user_id: someUserID.username,
-          chat_id: chatID,
+          chat_id: this.props.pair.chat_id,
           content: message
         }
       }
     })
     .done((response) => {
-      this.setState({ messages: this.state.messages.concat(response.content) })
-    })
+      this.setState({ messages: this.state.messages.concat({name: response.user.name, text: response.content}) })
+    }.bind(this))
   }
 
   render() {
     return(
       <div>
-        <button onClick={this.toggleChatVisibility}>Chat with batgirl</button>
+        <button onClick={this.toggleChatVisibility}>Chat with {this.props.pair.name}</button>
         {this.showChat()}
       </div>
     )

@@ -86,11 +86,11 @@ class MatchesViewAll extends React.Component {
             {this.showMatchedPairs()}
           </ul>
           <ul>
-          {this.showMatches()}
+            {this.showMatches()}
           </ul>
         </div>
         <div>
-        <ChatSidebar matchedPairs={this.state.matchedPairs} />
+          <ChatSidebar matchedPairs={this.state.matchedPairs} />
         </div>
       </div>
     )
