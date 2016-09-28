@@ -8,16 +8,20 @@ class BirdsongCell extends React.Component {
     let cell
     if (this.props.deleteType) {
       cell =
-      <div>
-        <a className="alter-list-link" onClick={this.props.setAnthem}>Anthem</a>
+      <div className="cell">
         <iframe src={`https://embed.spotify.com/?uri=${this.props.trackURI}`} width="300" height="80" frameBorder="0" allowTransparency="true"></iframe>
-        <a className="alter-list-link" onClick={this.props.deleteSongFromBirdlist}>Delete</a>
+        <div className="alter-list-link">
+        <a onClick={this.props.setAnthem}>Anthem</a>
+        <a onClick={this.props.deleteSongFromBirdlist}>Delete</a>
+        </div>
       </div>
     } else if (this.props.addType) {
       cell =
-      <div>
+      <div className="cell">
         <iframe src={`https://embed.spotify.com/?uri=${this.props.trackURI}`} width="300" height="80" frameBorder="0" allowTransparency="true"></iframe>
+        <div className="alter-list-link">
         <a onClick={this.props.addSongToBirdlist}>Add</a>
+        </div>
       </div>
     }
     return cell

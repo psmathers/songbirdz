@@ -119,7 +119,7 @@ class CurrentBirdlist extends React.Component {
 
   render() {
     return(
-      <div>
+      <div id="current-list">
         {
           this.state.tracks.map((track) => {
             let anthemWithTrack = this.setAnthem.bind(this, track);

@@ -23,6 +23,10 @@ body {
   background: #e2e1e0;
 }
 
+#hidden {
+  padding-bottom: 10%
+}
+
 #yield {
   margin-top: 30px;
   width: 70%;
@@ -30,16 +34,20 @@ body {
 }
 
 #title {
-  border: 1px solid;
-  /*padding-bottom: 5%;*/
-  margin: auto;
+  /*border: 1px solid;*/
+  /*padding-bottom: 10px;*/
+  /*margin: auto;*/
   width: 70%;
   min-width: 400px;
+  float: bottom;
+  color: ghostwhite;
+  display: inline-block;
 }
 
 #title h2 {
   margin: 0;
   padding: 0;
+  /*display: inline-block;*/
 
 }
 
@@ -316,13 +324,13 @@ ul {
 
 .profile-info {
   /*margin:auto;*/
-  width: 45%;
+  width: 525px;
   min-width: 400px;
   margin-right: 10px;
   display:inline-block;
   vertical-align: top;
   background: ghostwhite;
-  padding: 30px 10px 99px 10px;
+  padding: 30px 10px 107px 10px;
   font-size: 14px;
   border: 3px solid;
   border-image: linear-gradient(#FF3D00, #9575CD) 10;
@@ -358,21 +366,71 @@ ul {
   border: 3px solid;
   border-image: linear-gradient(#FF3D00, #9575CD) 10;
   background: ghostwhite;
-  width: 45%;
+  width: 525px;
   /*margin-top: 10%;*/
   display: inline-block;
   vertical-align: top;
 }
 
-/* navbar */
+#current-list {
+  /*border: 1px solid;*/
+  margin: 0;
+  padding-left: 10%;
+}
+
+#search {
+  /*border: 1px solid;*/
+  width: 60%;
+  margin:auto;
+}
+
+#search input {
+  width: 300px;
+  height: 30px;
+  margin: auto;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+#search input[type="submit"] {
+  width: 306.5px;
+  height: 30px;
+  margin: auto;
+  font-size: 20px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+.alter-list-link a {
+  /*border: 1px solid;*/
+  margin-right: 180px;
+  margin-left: 5px;
+  padding-bottom: 20px;
+  float: top;
+  color: ghostwhite;
+  cursor: pointer;
+}
+
+.cell {
+  border: 1px solid;
+  max-width: 300px;
+  min-width: 300px;
+  margin: auto;
+  margin-right: 115px;
+  margin-bottom: 10px;
+  background-color:  #292929;
+  /*^^^this is as close to the exact color of the spotify player as I''ve found - do not change^^^*/
+}
 
 /* navbar */
-#hidden {
+#hide-text {
   color: #212121;
 }
 
+
 .navbar {
   margin-bottom: 50px;
+  /*padding-left: 30px*/
 
 }
 .navbar ul {
@@ -390,15 +448,17 @@ ul {
     font-weight: 100;
     border-bottom: 2px solid;
     border-image: linear-gradient(#9575CD, #FF3D00) 30;
-    text-align: right;
+
 }
 .navbar li {
-    display: inline-block;
+ float: right;
+ /*padding: 70px 10px 14px 16px;*/
 }
 .navbar li a {
     display: block;
     color: ghostwhite;
-    padding: 14px 16px;
+    /*padding: 5px 5px 5px 5px;*/
+    padding: 70px 10px 14px 16px;
     text-decoration: none;
 }
 /* Change the link color to #111 (black) on hover */
