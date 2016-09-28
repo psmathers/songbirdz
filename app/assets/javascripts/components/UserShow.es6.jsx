@@ -65,7 +65,7 @@ class UserShow extends React.Component {
 
   render() {
     let user = this.state.user
-    let user_img = this.state.user.avatar
+    let user_img = this.props.userImg
 //           <pre><code>
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>

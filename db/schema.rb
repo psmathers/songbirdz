@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 20160927194752) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",           null: false
-    t.string   "provider",       null: false
-    t.string   "uid",            null: false
-    t.string   "token",          null: false
-    t.string   "refresh_token",  null: false
+    t.string   "name",               null: false
+    t.string   "provider",           null: false
+    t.string   "uid",                null: false
+    t.string   "token",              null: false
+    t.string   "refresh_token",      null: false
     t.integer  "age"
     t.string   "gender"
     t.text     "about"
@@ -63,9 +63,12 @@ ActiveRecord::Schema.define(version: 20160927194752) do
     t.integer  "max_age_choice"
     t.string   "birdlist_id"
     t.string   "anthem_id"
-    t.string   "avatar"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end

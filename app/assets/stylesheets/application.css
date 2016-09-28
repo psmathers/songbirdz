@@ -121,6 +121,42 @@ ul {
   list-style: none;
 }
 
+/*image submit form*/
+/*<%= f.file_field :image %>*/
+#image_submit {
+  width: 30%;
+}
+
+#user_image {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+label[for=user_image] {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+label[for=user_image],
+label[for=user_image] {
+    background-color: red;
+}
+
+label[for=user_image] {
+  cursor: pointer; /* "hand" cursor */
+}
+
+label[for=user_image] * {
+  pointer-events: none;
+}
+
 
 /*profile edit form*/
 .form-onboarding-container {
