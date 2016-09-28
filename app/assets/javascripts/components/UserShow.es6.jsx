@@ -70,8 +70,7 @@ class UserShow extends React.Component {
 //         {JSON.stringify(this.props, null, 4)}
 // </code></pre>
     return(
-
-       <div>
+      <div>
         <div className="profile-container">
           <div className="profile-info">
             <div className="profile-image">
