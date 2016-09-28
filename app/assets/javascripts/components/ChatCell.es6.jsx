@@ -8,9 +8,22 @@ class ChatCell extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.toggleChatVisibility = this.toggleChatVisibility.bind(this)
     this.showChat = this.showChat.bind(this)
+    this.getChatUpdates = this.getChatUpdates.bind(this)
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.showFull === true) {
+      this.chatTimerID = setInterval(this.getChatUpdates, 5000);
+    } else if (nextState.showFull === false) {
+      clearInterval(this.chatTimerID);
+    }
   }
 
   componentDidMount() {
+    this.getChatUpdates()
+  }
+
+  getChatUpdates() {
     $.ajax({
       url: `/chats/${this.props.pair.chat_id}/messages`,
       method: "GET"
@@ -22,6 +35,7 @@ class ChatCell extends React.Component {
       }
       this.setState({messages: messages})
     })
+    clearInterval(this.chatTimerID);
   }
 
   toggleChatVisibility() {
