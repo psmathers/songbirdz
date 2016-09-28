@@ -1,4 +1,4 @@
-<%= react_component 'UserShow', user: @user %>
+<%= react_component 'UserShow', user: @user, userImg: current_user.image.url %>
 
 <%= form_for :user, url: "/users/#{current_user.id}", html: { multipart: true } do |f| %>
   <input type="hidden" name="_method" value="put">
@@ -6,8 +6,6 @@
   <label for="user_image"><span>Choose a file</span></label>
   <input type="submit" id="image_submit" value="Create">
 <% end %>
-
-<img src="<%= current_user.image.url %>"/>
 
 <script type="text/javascript">
   var inputs = document.querySelectorAll( '.inputfile' );
