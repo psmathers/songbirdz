@@ -1,20 +1,22 @@
 class MessagesController < ApplicationController
   def index
-
+    @chat = Chat.find(params[:chat_id])
+    @messages = @chat.messages.as_json(include: {user: {only: :name}})
+    render json: @messages
   end
 
   def create
-    @chat = Chat.find_or_create_by(id: params[:message][:chat_id])
+    @chat = Chat.find(message_params["chat_id"])
     @message = @chat.messages.new(message_params)
     if request.xhr?
       if @message.save
-        return @message.as_json
+        render json: @message.as_json(include: {user: {only: :name}})
       else
         @errors = @message.errors.full_messages
         puts @errors
       end
     else
-      
+
     end
   end
 

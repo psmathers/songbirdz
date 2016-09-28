@@ -11,13 +11,17 @@ class ChatCell extends React.Component {
   }
 
   componentDidMount() {
-    // $.ajax({
-    //   url: `/chats/${chatID}/messages`,
-    //   method: "GET"
-    // })
-    // .done((response) => {
-    //   this.setState({messages: response.content})
-    // })
+    $.ajax({
+      url: `/chats/${this.props.pair.id}/messages`,
+      method: "GET"
+    })
+    .done((response) => {
+      let messages = []
+      for (var i = 0; i < response.length; i++) {
+        messages.push({name: response[i].user.name, text: response[i].content})
+      }
+      this.setState({messages: messages})
+    })
   }
 
   toggleChatVisibility() {
@@ -61,20 +65,19 @@ class ChatCell extends React.Component {
     event.preventDefault();
 
     const message = this.refs.message.value;
-    const chatID = this.props.pair.id;
 
     $.ajax({
-      url: `/chats/${chatID}/messages`,
+      url: `/chats/${this.props.pair.chat_id}/messages`,
       method: "POST",
       data: {
         message: {
-          chat_id: chatID,
+          chat_id: this.props.pair.chat_id,
           content: message
         }
       }
     })
     .done((response) => {
-      this.setState({ messages: this.state.messages.concat(response.content) })
+      this.setState({ messages: this.state.messages.concat({name: response.user.name, text: response.content}) })
     }.bind(this))
   }
 
