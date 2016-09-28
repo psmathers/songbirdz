@@ -92,6 +92,7 @@ class UserShow extends React.Component {
           <Birdlist currentUser={user}/>
         </div>
       </div>
+      </div>
     )
   }
 }

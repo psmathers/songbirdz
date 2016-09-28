@@ -16,10 +16,11 @@
 
 
 body {
+  position: relative;
+  margin-top: 150px;
   width: 100%;
   font-family: 'Roboto', sans-serif;
   background: #e2e1e0;
-
 }
 
 #yield {
@@ -78,10 +79,15 @@ input[type="checkbox"] {
 
 input[type="submit"] {
   width: 100%;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: #FF3D00;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 2px;
+  background-color: #FF6138;
+  outline: 0;
+  outline-offset: 0;
+  border: 0;
+  color: ghostwhite;
+  font-weight: 100;
 }
 
 ul {
@@ -147,8 +153,6 @@ ul {
   margin: 6px;
 }
 
-
-
 /* richie css changes */
   .push-me {
     width: 30%;
@@ -163,100 +167,132 @@ ul {
     border: 1px solid grey;
     /*float: left;*/
   }
-  .player-container {
-    border: 1px dashed;
-    width: 40%;
-    margin-bottom: 0;
-    display: inline-block;
-    padding: 10px;
-    min-width: 300px;
-  }
-  .playlist-owner {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 68%;
-    text-align: center;
-    background-color: #262626;
-    color: white;
-    /*margin: auto;*/
-  }
+/* match cell */
+.player-container {
+  display: inline-block;
+  width: 400px;
+  height: 300px;
+  margin: 1rem;
+  background: ghostwhite;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
 
-  .iframe {
-    /*margin-left: 6.95%;*/
-    /*width: 70%;*/
-    /*margin: auto;*/
-  }
+.playlist-owner {
+  display: block;
+  margin: 46px auto -5px auto;
+  padding-top: 26px;
+  padding-bottom: 20px;
+  width: 298px;
+  text-align: center;
+  background-color: #717499;
+  color: ghostwhite;
+  border: 2px solid darkgray;
+  font-size: 14px;
+}
+
+#tier-1 {
+  /*background: #2E0927;*/
+}
+
+#tier-2 {
+
+}
+
+#matched-pair {
+
+}
+
+.iframe {
+  display: block;
+  text-align: center;
+  margin: auto;
+  width: 300px;
+}
+.buttons-container {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: -10px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  width: 298px;
+  background-color: #717499;
+  color: white;
+  border: 2px solid darkgray;
+  font-size: 14px;
+}
+.like {
+  float: none;
+  display: inline-block;
+  padding: 0px 10px;
+  width: 110px;
+}
+.push-me {
+  border-radius: 3px;
+  background-color: #f6774f;
+}
+
+/* dropdown */
+.dropdown {
+  border: 1px dotted;
+  vertical-align: top;
+  padding: 10px;
+  width: 550px;
+  display: inline-block;
+  margin-top: 0;
+}
 
 
-  .dropdown {
-    border: 1px dotted;
-    vertical-align: top;
-    padding: 10px;
-    width: 550px;
-    display: inline-block;
-    margin-top: 0;
-  }
-  .prof-pic {
-    height: 150px;
-    width: 150px;
-    vertical-align: top;
-    background-color: #9933ff;
-    display: inline-block;
-  }
-  .about {
-    height: 150px;
-    width: 350px;
-    margin-left: 20px;
-    display: inline-block;
-  }
-  .chat{
-    width: 200px;
-  }
-  .buttons-container {
-    margin-top: -5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 300px;
-    text-align: center;
-    background-color: #212121;
-    color: white;
-  }
-  .like{
-    display: inline-block;
-    width: 100px;
-  }
-  .color-key {
-    padding: 10px;
-    background-color: #212121;
-    color: white;
-  }
-  .purple {
-    color: #9933ff;
-  }
-  .blue {
-    color: #0099cc;
-  }
-  .green {
-    color: #00b36b;
-  }
-  .yellow {
-    color: #ffff00;
-  }
-  .red {
-    color: #ff0000;
-  }
+.prof-pic {
+  height: 150px;
+  width: 150px;
+  vertical-align: top;
+  background-color: #9933ff;
+  display: inline-block;
+}
+.about {
+  height: 150px;
+  width: 350px;
+  margin-left: 20px;
+  display: inline-block;
+}
+.chat{
+  width: 200px;
+}
+.color-key {
+  padding: 10px;
+  background-color: #212121;
+  color: white;
+}
+.purple {
+  color: #9933ff;
+}
+.blue {
+  color: #0099cc;
+}
+.green {
+  color: #00b36b;
+}
+.yellow {
+  color: #ffff00;
+}
+.red {
+  color: #ff0000;
+}
 /* end richie css changes */
 
 /* user show */
 .profile-container {
-  background: url('') no-repeat center center fixed;
+  /*background: url('') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.7;
+  opacity: 0.8;
   position: relative;
-  margin-top: 150px;
+  margin-top: 150px;*/
 }
 .profile-info {
   width: 400px;
