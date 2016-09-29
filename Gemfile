@@ -29,7 +29,8 @@ gem 'omniauth-spotify'
 gem 'react-rails'
 gem 'pry-rails'
 
-gem 'paperclip'
+gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk', '~> 2.0.34'
 
 
 # Use Redis adapter to run Action Cable in production
