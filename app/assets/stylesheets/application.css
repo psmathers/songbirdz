@@ -662,7 +662,9 @@ label[for=user_image] * {
   top: 0;
 }
 
-/* Chat CSS */
+/* Beginning of Chat CSS */
+/* */
+/* */
 .chat-sidebar {
   /* Layout */
   display: inline-block;
@@ -676,7 +678,30 @@ label[for=user_image] * {
   /* UI */
 }
 
-.chat-message {
+#match-chat {
+  /* UI */
+}
+
+.toggle-chat {
+  /* Layout */
+
+  /* Sizing */
+  width: 100%;
+  height: 20px;
+  font-size: 12px;
+
+  /* UI */
+  border-radius: 3px;
+  background-color: #FF6138;
+  outline: 0;
+  outline-offset: 0;
+  border: 0;
+  color: ghostwhite;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.message-input {
   /* Sizing */
   width: 100%;
 }
@@ -690,3 +715,25 @@ label[for=user_image] * {
   /* Sizing */
   width: 100%;
 }
+
+.message-text {
+  /* Layout */
+  margin-bottom: 5px;
+
+  /* Sizing */
+  font-size: 12px;
+
+  /* UI */
+}
+
+.message-text:last-child {
+  /* Layout */
+  margin-bottom: 0px;
+
+  /* Sizing */
+
+  /* UI */
+}
+/* */
+/* */
+/* End of Chat CSS */
