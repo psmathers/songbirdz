@@ -50,8 +50,8 @@ class MatchCell extends React.Component {
 
   showTier() {
     if (this.props.data.match_tier) {
-      return (
-        <span><span> | </span><span>Tier: {this.props.data.match_tier}</span></span>
+
+      return ( <span>a</span>
       )
     };
   }
@@ -100,25 +100,25 @@ class MatchCell extends React.Component {
 
   render() {
     let anthemID = this.props.data.anthem_id
-      // <pre><code>
-      //   {JSON.stringify(this.props, null, 4)}
-      // </code></pre>
     return(
+
       <li className="match-cell">
         <div className="player-container">
           <div id="tier-1" className="playlist-owner">
-            {this.props.data.name}
+          <div className="blue">{this.props.data.name}</div>
             {this.showTier()}
           </div>
           <div className="iframe">
            <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
           </div>
           {this.showLikes()}
-        </div><br/>
-        <div className="dropdown">
-         {this.showDropDownButton()}
-          {this.showDropDown()}
+          <br/>
+          <div>
+           {this.showDropDownButton()}
+            {this.showDropDown()}
+          </div>
         </div>
+
       </li>
     )
   }

@@ -13,12 +13,13 @@ class DropDown extends React.Component {
 
   render() {
     return(
-      <div>
-        <img src={this.props.userImg}/>
-        <div className="about"> Traits: {this.props.match.about} </div>
-        <form className="chat" action="/chat" method="get">
-          <input type="submit" value="Start Chirp"/>
-        </form>
+      <div className="dropdown">
+        <div className="dropdown-image">
+          <img src={this.props.userImg}/>
+        </div>
+        <div className="about">
+          About: {this.props.match.about}
+        </div>
       </div>
     )
   }
