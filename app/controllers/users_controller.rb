@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
  def show
+  @img = current_user.display_img
   if request.xhr?
     current_user.get_anthem_id
     current_user.save
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
 
  def update
   user = current_user
-
   if params[:user] != nil
     user.update(user_params)
   else
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :name, :provider, :uid, :token, :refresh_token, :age, :gender, :about, :min_age_choice, :max_age_choice, :birdlist_id, :anthem_id, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :created_at, :updated_at, :user, :image)
+    params.require(:user).permit(:image)
   end
 
 end

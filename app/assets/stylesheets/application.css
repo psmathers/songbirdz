@@ -400,11 +400,12 @@ label[for=user_image] * {
   display:inline-block;
   vertical-align: top;
   background: ghostwhite;
-  padding: 30px 15px 30px 10px;
+  padding: 30px 15px 178px 10px;
   font-size: 14px;
+  word-break: break-all;
 /*  border: 3px solid;
   border-image: linear-gradient(#FF3D00, #9575CD) 10;*/
-  height: 600px;
+  /*height: 600px;*/
   /*float: left;*/
 }
 
