@@ -59,7 +59,7 @@ class ChatCell extends React.Component {
           }
         </div>
         <form onSubmit={this.handleSubmit}>
-          <input className="chat-message" type="text" ref="message" placeholder="Say hi to your match, don't be afraid" />
+          <input className="message-input" type="text" ref="message" placeholder="Say hi to your match, don't be afraid" />
           <input className="message-submit" type="submit" value="Send" />
         </form>
       </div>
@@ -98,7 +98,7 @@ class ChatCell extends React.Component {
   render() {
     return(
       <div>
-        <button onClick={this.toggleChatVisibility}>Chat with {this.props.pair.name}</button>
+        <button className="toggle-chat" onClick={this.toggleChatVisibility}>Chat with {this.props.pair.name}</button>
         {this.showChat()}
       </div>
     )
