@@ -689,6 +689,7 @@ label[for=user_image] * {
 
 #match-chat {
   /* UI */
+  margin-bottom: 0px;
 }
 
 .toggle-chat {
