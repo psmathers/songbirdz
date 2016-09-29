@@ -248,6 +248,7 @@ label[for=user_image] * {
 
 /* richie css changes */
   .push-me {
+
     width: 30%;
     height: 40px;
     font-size: 20px;
@@ -255,6 +256,7 @@ label[for=user_image] * {
     background-color: #FF3D00;
     margin-top: 0;
   }
+
   .match-cell {
     margin-bottom: 20px;
     border: 1px solid grey;
@@ -265,8 +267,8 @@ label[for=user_image] * {
 .player-container {
   display: inline-block;
 
-  width: 450px;
-  height: 600px;
+  width: 400px;
+  height: 450px;
   margin: 1em;
   background: ghostwhite;
   border-radius: 3px;
@@ -281,7 +283,7 @@ label[for=user_image] * {
   padding-bottom: 20px;
   width: 298px;
   text-align: center;
-  background-color: #717499;
+  background-color: #404040;
   color: ghostwhite;
   border: 2px solid darkgray;
   font-size: 14px;
@@ -313,7 +315,7 @@ label[for=user_image] * {
   padding-top: 22px;
   padding-bottom: 22px;
   width: 298px;
-  background-color: #717499;
+  background-color: #404040;
   color: white;
   border: 2px solid darkgray;
   font-size: 14px;
@@ -324,7 +326,16 @@ label[for=user_image] * {
   padding: 0px 10px;
   width: 110px;
 }
+
+.container-push-me {
+  display: block;
+  text-align: center;
+  width: 302px;
+  margin: auto;
+}
+
 .push-me {
+  width: 300px;
   border-radius: 3px;
   background-color: #f6774f;
 }
@@ -333,9 +344,9 @@ label[for=user_image] * {
 .dropdown {
   vertical-align: top;
   padding: 10px;
-  width: 425px;
+  width: 380px;
   display: inline-block;
-  margin-top: 0;
+  margin-top: 10px;
 }
 
 .dropdown-image {
@@ -344,7 +355,6 @@ label[for=user_image] * {
   height: 150px;
   width: 155px;
   margin-left: 20px;
-
 }
 
 .prof-pic {
@@ -357,7 +367,7 @@ label[for=user_image] * {
 .about {
   display: inline-block;
   height: 150px;
-  width: 200px;
+  width: 150px;
   margin-left: 20px;
 
 }
@@ -374,6 +384,7 @@ label[for=user_image] * {
 }
 .blue {
   color: #0099cc;
+  text-shadow: 1px 1px 3px black;
 }
 .green {
   color: #00b36b;
@@ -643,6 +654,7 @@ label[for=user_image] * {
 .chat-sidebar {
   /* Layout */
   display: inline-block;
+  vertical-align: top;
   position: fixed;
   top: 15%;
   right: 3%;
@@ -654,8 +666,11 @@ label[for=user_image] * {
 }
 
 #match-chat {
-  /* UI */
-  margin-bottom: 0px;
+  /* Layout */
+  margin-bottom: 10px;
+  text-align: center;
+  /* Sizing */
+  font-size: 1.5em;
 }
 
 .toggle-chat {
@@ -713,3 +728,8 @@ label[for=user_image] * {
 /* */
 /* */
 /* End of Chat CSS */
+
+.pre-code {
+  position: relative;
+  top: 50px;
+}

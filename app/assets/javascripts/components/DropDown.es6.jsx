@@ -18,7 +18,7 @@ class DropDown extends React.Component {
           <img src={this.props.userImg}/>
         </div>
         <div className="about">
-          About: {this.props.match.about}
+          <h5>{this.props.match.about}</h5>
         </div>
       </div>
     )
