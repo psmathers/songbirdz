@@ -17,7 +17,7 @@ class ChatSidebar extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="chat-sidebar">
         {
           this.props.matchedPairs.map((pair, index) => {
             let toggleWithChat = this.toggleSingleChat.bind(this, index)

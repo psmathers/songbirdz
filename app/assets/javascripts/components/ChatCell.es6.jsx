@@ -59,8 +59,8 @@ class ChatCell extends React.Component {
           }
         </div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" ref="message" placeholder="Say hi to your match, don't be afraid" />
-          <input type="submit" value="Send" />
+          <input className="chat-message" type="text" ref="message" placeholder="Say hi to your match, don't be afraid" />
+          <input className="message-submit" type="submit" value="Send" />
         </form>
       </div>
     } else {
