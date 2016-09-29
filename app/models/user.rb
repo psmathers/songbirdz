@@ -235,7 +235,7 @@ class User < ApplicationRecord
         pair_hash["gender"] = pair.sender.gender
         pair_hash["about"] = pair.sender.about
         pair_hash["anthem_id"] = pair.sender.anthem_id
-        pair_hash["chat_id"] = pair.id
+        pair_hash["chat_id"] = pair.chat_id
         all_pairs << pair_hash
       else
         pair_hash["id"] = pair.receiver.id
@@ -244,7 +244,7 @@ class User < ApplicationRecord
         pair_hash["gender"] = pair.receiver.gender
         pair_hash["about"] = pair.receiver.about
         pair_hash["anthem_id"] = pair.receiver.anthem_id
-        pair_hash["chat_id"] = pair.id
+        pair_hash["chat_id"] = pair.chat_id
         all_pairs << pair_hash
       end
 
