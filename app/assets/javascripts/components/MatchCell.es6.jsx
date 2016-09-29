@@ -100,6 +100,7 @@ class MatchCell extends React.Component {
 
   render() {
     let anthemID = this.props.data.anthem_id
+          
     return(
 
       <li className="match-cell">
