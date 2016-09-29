@@ -34,7 +34,7 @@ class MatchCell extends React.Component {
   showDropDownButton() {
     if (!this.props.data.match_tier) {
       return (
-        <button className="push-me" onClick={this.toggleDropDown}>Show Info</button>
+        <button className="push-me" onClick={this.toggleDropDown}>About {this.props.data.name}</button>
       )
     };
   }
@@ -50,10 +50,18 @@ class MatchCell extends React.Component {
 
   showTier() {
     if (this.props.data.match_tier) {
+      let styling;
+      if (this.props.data.match_tier === 1) {
+        styling=  <div className="purple">{this.props.data.name}</div>
+      } else if (this.props.data.match_tier === 2){
+        styling=  <div className="blue">{this.props.data.name}</div>
+      }
+      return styling;
+    }
+    else {
+      return (<div className="green">{this.props.data.name}</div>)
+    }
 
-      return ( <span>a</span>
-      )
-    };
   }
 
   handleLike(event) {
@@ -100,12 +108,14 @@ class MatchCell extends React.Component {
 
   render() {
     let anthemID = this.props.data.anthem_id
+
     return(
+      <div>
 
       <li className="match-cell">
         <div className="player-container">
           <div id="tier-1" className="playlist-owner">
-          <div className="blue">{this.props.data.name}</div>
+
             {this.showTier()}
           </div>
           <div className="iframe">
@@ -113,13 +123,16 @@ class MatchCell extends React.Component {
           </div>
           {this.showLikes()}
           <br/>
+          <div className="container-push-me">
+            {this.showDropDownButton()}
+          </div>
           <div>
-           {this.showDropDownButton()}
             {this.showDropDown()}
           </div>
         </div>
 
       </li>
+      </div>
     )
   }
 }
