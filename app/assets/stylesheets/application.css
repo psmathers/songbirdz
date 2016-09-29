@@ -24,8 +24,6 @@ body {
   margin: 0 auto;
 }
 
-
-
 #hidden {
   padding-bottom: 5%
 }
@@ -186,7 +184,6 @@ label[for=user_image] * {
 }
 
 
-
 /*profile edit form*/
 .form-onboarding-container {
   width: 50%;
@@ -248,7 +245,6 @@ label[for=user_image] * {
 
 /* richie css changes */
   .push-me {
-
     width: 30%;
     height: 40px;
     font-size: 20px;
@@ -266,7 +262,6 @@ label[for=user_image] * {
 /* match cell */
 .player-container {
   display: inline-block;
-
   width: 400px;
   height: 450px;
   margin: 1em;
@@ -539,6 +534,7 @@ label[for=user_image] * {
   height: 80px;
   background-color: #212121;
   vertical-align: bottom;
+  border-bottom: 
 }
 .nav-bar li, .nav-bar a {
   height: 50px;
