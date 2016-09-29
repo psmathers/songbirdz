@@ -5,6 +5,7 @@ class ChatSidebar extends React.Component {
       chatIndexOpen: null
     };
     this.toggleSingleChat = this.toggleSingleChat.bind(this)
+    this.showMatchChatHeader = this.showMatchChatHeader.bind(this)
   }
 
   toggleSingleChat(chatIndex) {
@@ -15,10 +16,20 @@ class ChatSidebar extends React.Component {
 
   }
 
+  showMatchChatHeader() {
+    let availableSpace;
+    if (this.props.matchedPairs.length > 0) {
+      availableSpace = <div><p id="match-chat">Match Chat</p></div>
+    } else {
+      availableSpace = null;
+    }
+    return availableSpace;
+  }
+
   render() {
     return(
       <div className="chat-sidebar">
-        <div><p id="match-chat">Match Chat</p></div>
+        {this.showMatchChatHeader()}
         {
           this.props.matchedPairs.map((pair, index) => {
             let toggleWithChat = this.toggleSingleChat.bind(this, index)
