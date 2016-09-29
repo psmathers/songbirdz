@@ -266,7 +266,7 @@ label[for=user_image] * {
   display: inline-block;
   width: 400px;
   height: 300px;
-  margin: 1rem;
+  margin: 1em;
   background: ghostwhite;
   border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.24);
@@ -564,12 +564,6 @@ label[for=user_image] * {
   background-repeat: no-repeat;
   background-position: center left;
   color: #dde1e2;
-}
-.show {
-  background-image: url(assets/images/down-arrow-icon.png);
-}
-.hide {
-  background-image: url(assets/images/up-arrow-icon.png);
 }
 
 @media only screen and (max-width: 800px) {
