@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   def index
-    # change this
+    current_user.get_new_token
     @matches= current_user.match_list.as_json(methods: :match_tier)
     matched_pairs = current_user.get_matched_pairs
     if matched_pairs.empty?
