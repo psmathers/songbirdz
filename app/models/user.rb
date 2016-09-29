@@ -5,15 +5,15 @@ class User < ApplicationRecord
   has_many :preferences, through: :user_preferences
   has_many :sent_pairs, class_name: "Pair", foreign_key: :sender_id
   has_many :received_pairs, class_name: "Pair", foreign_key: :receiver_id
-  # has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
 
   # before_create :get_avatar
   before_update :get_birdlist_id, :get_anthem_id
 
-  # validates_attachment :image, presence: true,
-  #     content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
+  validates_attachment :image, presence: true,
+      content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
 
-# <%= current_user.image.url %>
+# <img src="<%= current_user.image.url %>"/>
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -24,6 +24,18 @@ class User < ApplicationRecord
       user.refresh_token = auth["credentials"]["refresh_token"]
     end
   end
+
+  def display_img
+    if self.image.url.include?("missing.png")
+      "http://www.njpp.org/wp-content/themes/njpp15/images/default_image.png"
+    else
+      self.image.url(:large)
+    end
+  end
+
+  # def s3_credentials
+  #   {:bucket => ENV.fetch('S3_BUCKET_NAME'), :access_key_id => ENV.fetch('AWS_ACCESS_KEY_ID'), :secret_access_key => 'AWS_SECRET_ACCESS_KEY', :s3_region => ENV.fetch('AWS_REGION')}
+  # end
 
   # def get_avatar
   #   url = "https://randomuser.me/api/"
