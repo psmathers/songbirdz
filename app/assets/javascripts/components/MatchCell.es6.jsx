@@ -115,7 +115,6 @@ class MatchCell extends React.Component {
       <li className="match-cell">
         <div className="player-container">
           <div id="tier-1" className="playlist-owner">
-
             {this.showTier()}
           </div>
           <div className="iframe">
