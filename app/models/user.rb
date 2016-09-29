@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # before_create :get_avatar
   before_update :get_birdlist_id, :get_anthem_id
 
-  validates_attachment :image, presence: true,
+  validates_attachment :image
       content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "image/jpg"] }
 
 # <img src="<%= current_user.image.url %>"/>
