@@ -13,6 +13,7 @@ class UserShow extends React.Component {
     this.showForm = this.showForm.bind(this)
     this.showAge = this.showAge.bind(this)
     this.showMinMax = this.showMinMax.bind(this)
+    this.showAbout = this.showAbout.bind(this)
   }
 
   updateUser(response) {
@@ -63,6 +64,13 @@ class UserShow extends React.Component {
     }
   }
 
+  showAbout() {
+    let about = this.state.user.about
+    if (about) {
+      return (<p>About: {about}</p>)
+    }
+  }
+
   render() {
     let user = this.state.user
     let user_img = this.props.userImg
@@ -81,7 +89,7 @@ class UserShow extends React.Component {
             <p>{user.gender}</p>
             {this.showMinMax()}
             {this.showPreferences()}
-            <p>About: ${user.about}</p>
+            {this.showAbout()}
             <div id="form-toggle">
               <button id="block-button" onClick={this.toggleForm}>Edit</button>
               {this.showForm()}

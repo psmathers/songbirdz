@@ -79,7 +79,6 @@ class ChatCell extends React.Component {
     event.preventDefault();
 
     const message = this.refs.message.value;
-
     $.ajax({
       url: `/chats/${this.props.pair.chat_id}/messages`,
       method: "POST",
@@ -92,6 +91,7 @@ class ChatCell extends React.Component {
     })
     .done((response) => {
       this.setState({ messages: this.state.messages.concat({name: response.user.name, text: response.content}) })
+      $('.message-input').val('')
     }.bind(this))
   }
 

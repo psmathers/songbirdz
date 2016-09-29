@@ -1,4 +1,4 @@
-# <%= react_component 'UserShow', user: @user, userImg: @img %>
+<%= react_component 'UserShow', user: @user, userImg: @img %>
 
 <%= form_for :user, url: "/users/#{current_user.id}", html: { multipart: true, id: "img_form" } do |f| %>
   <input type="hidden" name="_method" value="put">
