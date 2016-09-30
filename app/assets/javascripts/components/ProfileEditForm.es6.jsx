@@ -24,6 +24,7 @@ class ProfileEditForm extends React.Component {
         this.props.toggle()
       } else if (this.props.onboardingContainer) {
         this.setState({onboarding: true})
+        $('.form-container').html(null)
       }
     }.bind(this))
   }

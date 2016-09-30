@@ -10,6 +10,7 @@ class MatchesViewAll extends React.Component {
     this.updatePairs = this.updatePairs.bind(this)
     this.removeUser = this.removeUser.bind(this)
     this.destroyPairs = this.destroyPairs.bind(this)
+    this.showChatSideBar = this.showChatSideBar.bind(this)
   }
 
   componentDidMount() {
@@ -77,6 +78,14 @@ class MatchesViewAll extends React.Component {
     };
   }
 
+  showChatSideBar() {
+    if (this.state.matchedPairs.length > 0) {
+      return (<ChatSidebar matchedPairs={this.state.matchedPairs} />)
+    } else {
+      return null
+    }
+  }
+
   render() {
     return(
       <div>
@@ -89,7 +98,7 @@ class MatchesViewAll extends React.Component {
           </ul>
         </div>
         <div>
-          <ChatSidebar matchedPairs={this.state.matchedPairs} />
+          {this.showChatSideBar()}
         </div>
       </div>
     )
