@@ -74,9 +74,6 @@ class UserShow extends React.Component {
   render() {
     let user = this.state.user
     let user_img = this.props.userImg
-//           <pre><code>
-//         {JSON.stringify(this.props, null, 4)}
-// </code></pre>
     return(
       <div>
         <div className="profile-container">
