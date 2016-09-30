@@ -85,6 +85,55 @@ p, a {
   line-height:24px;
 }
 
+.landing-container {
+  /*position: relative;*/
+  margin-top: 140px;
+  background-color: #1A237E;
+  opacity: 0.7;
+  transition: background 1s ease;
+  background-size: cover;
+  border-radius: 2px;
+}
+.landing-content {
+  margin 0 0 50px;
+  padding: 0.8em;
+  color: white;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+}
+.landing-content h2 {
+  margin-bottom: 0;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+.landing-content h4 {
+  font-size: 20p;
+  margin-top: 0;
+  font-style: italic;
+}
+button {
+  width: 50%;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 2px;
+  background-color: #FF6138;
+  outline: 1px solid;
+  outline-offset: 0;
+  border: 0;
+  color: ghostwhite;
+  font-weight: 100;
+  cursor: pointer;
+}
+  /* Set up proportionate scaling */
+  /*width: 100%;
+  height: auto;*/
+
+  /* Set up positioning */
+  /*position: fixed;
+  top: 0;
+  left: 0;
+}*/
+
 /*profile-image*/
 /*.profile-image {
   background: red;
@@ -118,6 +167,7 @@ input[type="submit"] {
   font-weight: 100;
   cursor: pointer;
 }
+
 
 ul {
   list-style: none;
