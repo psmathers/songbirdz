@@ -117,8 +117,8 @@ class Landing extends React.Component {
             <h4>If music be the food of love, play on . . .</h4>
           </div>
           <div className="login-buttons">
-            <button>Sign In</button>
-            <button>Logout</button>
+            <button className="login">Sign In</button>
+            <button className="login">Logout</button>
           </div>
         </div>
 

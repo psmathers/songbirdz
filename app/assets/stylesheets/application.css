@@ -111,7 +111,7 @@ p, a {
   margin-top: 0;
   font-style: italic;
 }
-button {
+.login {
   width: 50%;
   height: 40px;
   font-size: 16px;
@@ -291,14 +291,15 @@ label[for=user_image] * {
 }
 
 /* richie css changes */
-  .push-me {
-    width: 30%;
+  /*.push-me {*/
+    /*width: 30%;*/
     /*height: 40px;*/
-    font-size: 20px;
+   /* font-size: 20px;
     border-radius: 5px;
     background-color: #FF3D00;
-    margin-top: 0;
-  }
+    margin-top: 0;*/
+
+  /*}*/
 
   .match-cell {
     margin-bottom: 20px;
@@ -396,6 +397,12 @@ label[for=user_image] * {
   background-color: #292929;
   color: #FF6138;
   /*padding: 0;*/
+  /*width: 30%;*/
+    /*height: 40px;*/
+    font-size: 20px;
+    /*border-radius: 5px;*/
+    /*background-color: #FF3D00;*/
+    /*margin-top: 0;*/
 }
 
 /* dropdown */
