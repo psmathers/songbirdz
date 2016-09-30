@@ -236,6 +236,7 @@ class User < ApplicationRecord
         pair_hash["about"] = pair.sender.about
         pair_hash["anthem_id"] = pair.sender.anthem_id
         pair_hash["chat_id"] = pair.chat_id
+        pair_hash["user_img"] = pair.sender.image.url(:large)
         all_pairs << pair_hash
       else
         pair_hash["id"] = pair.receiver.id
@@ -245,6 +246,7 @@ class User < ApplicationRecord
         pair_hash["about"] = pair.receiver.about
         pair_hash["anthem_id"] = pair.receiver.anthem_id
         pair_hash["chat_id"] = pair.chat_id
+        pair_hash["user_img"] = pair.receiver.image.url(:large)
         all_pairs << pair_hash
       end
 
