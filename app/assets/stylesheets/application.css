@@ -243,7 +243,7 @@ label[for=user_image] * {
 /* richie css changes */
   .push-me {
     width: 30%;
-    height: 40px;
+    /*height: 40px;*/
     font-size: 20px;
     border-radius: 5px;
     background-color: #FF3D00;
@@ -251,7 +251,7 @@ label[for=user_image] * {
   }
 
   .match-cell {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     /*border: 1px solid grey;*/
     float: left;
 
@@ -262,21 +262,13 @@ label[for=user_image] * {
   display: inline-block;
   padding: 0;
   margin: 0;
-  /*width: 400px;*/
-  /*height: 450px;*/
-  /*margin: 1em;*/
-  /*padding: 10px 10px 10px 10px;*/
-  /*background: ghostwhite;*/
-  /*border-radius: 3px;*/
-  /*box-shadow: 0 1px 3px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.24);*/
-  /*transition: all 0.3s cubic-bezier(.25,.8,.25,1);*/
 }
 
 .playlist-owner {
   display: block;
   /*margin: 46px auto -5px 50px;*/
   margin: auto;
-  margin-left: 4px;
+  margin-left: 3.5px;
   padding-top: 26px;
   padding-bottom: 20px;
   width: 299.5px;
@@ -284,7 +276,7 @@ label[for=user_image] * {
   background-color: #292929;
   color: ghostwhite;
   border: 2px solid darkgray;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 #tier-1 {
@@ -303,6 +295,7 @@ label[for=user_image] * {
   display: block;
   text-align: center;
   margin: auto;
+  margin-bottom: 0;
   /*margin-left: 27px;*/
   width: 300px;
 }
@@ -313,7 +306,7 @@ label[for=user_image] * {
   margin-top: -10px;
   padding-top: 22px;
   padding-bottom: 22px;
-  margin-left: 4px;
+  margin-left: 3.5px;
   width: 299.5px;
   background-color: #292929;
   color: white;
@@ -336,47 +329,58 @@ label[for=user_image] * {
 }
 
 .container-push-me {
-  display: block;
+  /*display: block;*/
   text-align: center;
   width: 302px;
-  margin: auto;
+  margin: 0;
+  margin-top: -5px;
+  /*padding-bottom: 30px;*/
+  /*background-color: #292929;*/
 }
 
 .push-me {
   width: 300px;
+  padding: 20px;
+  padding-bottom: 20px;
   border-radius: 3px;
-  background-color: #f6774f;
+  background-color: #292929;
+  color: #FF6138;
+  /*padding: 0;*/
 }
 
 /* dropdown */
 .dropdown {
+  border-color: 1px solid;
   vertical-align: top;
   padding: 10px;
-  width: 380px;
+  width: 300px;
   display: inline-block;
+  /*margin: 0;*/
+  padding: 0;
   margin-top: 10px;
+
 }
 
 .dropdown-image {
-  display: inline-block;
-  vertical-align: top;
-  height: 150px;
-  width: 155px;
-  margin-left: 20px;
+  width: 100%;
+  text-align: center;
+  margin: auto;
 }
 
 .prof-pic {
-  height: 150px;
-  width: 150px;
+  /*height: 150px;*/
+  /*width: 150px;*/
   vertical-align: top;
   background-color: #9933ff;
   display: inline-block;
+  margin: 0;
 }
 .about {
   display: inline-block;
-  height: 150px;
-  width: 150px;
+  /*height: 150px;*/
+  /*width: 150px;*/
   margin-left: 20px;
+  margin: 0;
 
 }
 .chat{
@@ -398,7 +402,7 @@ label[for=user_image] * {
 
 .color-key li {
   float: left;
-  padding-right: 9%;
+  padding-right: 7%;
 }
 
 .purple {
@@ -676,24 +680,36 @@ label[for=user_image] * {
 /* */
 .chat-sidebar {
   /* Layout */
-  display: inline-block;
+  /*display: inline-block;*/
   vertical-align: top;
   position: fixed;
-  top: 15%;
+  top: 11.3%;
   right: 3%;
+  /*border: 1px solid;*/
+  background-color: #292929;
+  padding: 15px;
+  padding-top: 0;
+  color: ghostwhite;
+  /*padding-right: 15px;*/
 
   /* Sizing */
-  width: 17.5%;
+  width: 180px;
 
   /* UI */
 }
 
 #match-chat {
   /* Layout */
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-align: center;
   /* Sizing */
   font-size: 1.5em;
+  padding: 0;
+}
+
+#chat-h {
+  padding-top: 0;
+  margin: 0;
 }
 
 .toggle-chat {
@@ -701,12 +717,13 @@ label[for=user_image] * {
 
   /* Sizing */
   width: 100%;
-  height: 20px;
+  height: 40px;
   font-size: 12px;
+  margin-bottom: 5px;
 
   /* UI */
   border-radius: 3px;
-  background-color: #FF6138;
+  background-color: #00d95a;
   outline: 0;
   outline-offset: 0;
   border: 0;
@@ -717,14 +734,17 @@ label[for=user_image] * {
 
 .message-input {
   /* Sizing */
-  width: 100%;
+  width: 96.5%;
+  height: 50px;
+  font-size: 14px;
+  /*word-break: break-all;*/
 }
 
 .message-submit {
   /* Layout */
   position: relative;
   left: 1.5%;
-  margin-top: 5px;
+  margin-top: 2px;
 
   /* Sizing */
   width: 100%;

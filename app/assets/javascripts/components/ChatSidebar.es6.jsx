@@ -19,7 +19,7 @@ class ChatSidebar extends React.Component {
   showMatchChatHeader() {
     let availableSpace;
     if (this.props.matchedPairs.length > 0) {
-      availableSpace = <div><p id="match-chat">Match Chat</p></div>
+      availableSpace = <div id="chat-h"><p id="match-chat">Match Chat</p></div>
     } else {
       availableSpace = null;
     }

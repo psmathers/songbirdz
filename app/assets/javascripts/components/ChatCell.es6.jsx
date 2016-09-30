@@ -59,7 +59,7 @@ class ChatCell extends React.Component {
           }
         </div>
         <form onSubmit={this.handleSubmit}>
-          <input className="message-input" type="text" ref="message" placeholder="Say hi to your match, don't be afraid" />
+          <textarea className="message-input" ref="message" placeholder="Say hi to your match, don't be afraid"></textarea>
           <input className="message-submit" type="submit" value="Send" />
         </form>
       </div>

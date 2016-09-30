@@ -121,13 +121,10 @@ class MatchCell extends React.Component {
            <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
           </div>
           {this.showLikes()}
-          <br/>
           <div className="container-push-me">
             {this.showDropDownButton()}
           </div>
-          <div>
             {this.showDropDown()}
-          </div>
         </div>
 
       </li>
