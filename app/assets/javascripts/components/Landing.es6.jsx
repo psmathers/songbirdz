@@ -110,13 +110,18 @@ class Landing extends React.Component {
                        onboardingContainer />
     } else {
       availableSpace =
-      <div>
-        <div className="unique-value-prop">
-          <p>Discover romance through shared musical passion</p>
+
+        <div className="landing-container">
+          <div className="landing-content">
+            <h2>SongBirdz</h2>
+            <h4>If music be the food of love, play on . . .</h4>
+          </div>
+          <div className="login-buttons">
+            <button>Sign In</button>
+            <button>Logout</button>
+          </div>
         </div>
-        <Button signUp />
-        <Button logIn />
-      </div>
+
     }
     return availableSpace;
   }
