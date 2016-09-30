@@ -93,13 +93,13 @@ class MatchCell extends React.Component {
         <div id= "tier-1" className="buttons-container">
           <form onSubmit={this.handleLike} className="like" action="/matches" method="post">
           <input type="hidden" name="match_id" value={this.props.data.id} />
-          <input type="submit" value="Like" />
+          <input type="submit" value="+" />
           </form>
 
           <form onSubmit={this.handleDislike} className="like" action= {`/matches/:${this.props.data.id}`} method="post">
           <input type="hidden" name="_method" value="put" />
           <input type="hidden" name="match_id" value={this.props.data.id} />
-          <input type="submit" value="Dislike"/>
+          <input type="submit" value="-"/>
           </form>
         </div>
       )
@@ -121,13 +121,10 @@ class MatchCell extends React.Component {
            <iframe src={`https://embed.spotify.com/?uri=spotify:track:${anthemID}`} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
           </div>
           {this.showLikes()}
-          <br/>
           <div className="container-push-me">
             {this.showDropDownButton()}
           </div>
-          <div>
             {this.showDropDown()}
-          </div>
         </div>
 
       </li>
