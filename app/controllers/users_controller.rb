@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   if request.xhr?
     render :json => {user: user}.as_json(include: :preferences)
   else
-    redirect_to root_url
+    redirect_to user_path
   end
  end
 
