@@ -1,6 +1,8 @@
-# Songbirdz
+# SongBirdz
 
 Discover romance through shared musical passion.
+
+Using the power of the Spotify API along with Rails and React.js, SongBirdz takes the music you love most and uses it (along with basic preferences) to match you with kindred spirits. Scroll down to see the preview!
 
 Sign up through Spotify:
 
