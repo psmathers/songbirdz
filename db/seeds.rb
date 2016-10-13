@@ -9,7 +9,7 @@
 preferences = ["men", "women", "other"]
 
 preferences.each do |p|
-  Preference.create(looking_for: p)
+  Preference.create(looking_for: p) 
 end
 
 
