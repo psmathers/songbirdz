@@ -10,10 +10,10 @@ Spotify API, ReactJS, Rails, OmniAuth
 ## Team Members
 
 #### Parker Smathers
-https://github.com/psmathers
+GitHub: https://github.com/psmathers
 
 #### Terrence Stone
-https://github.com/terencestone
+GitHub: https://github.com/terencestone
 
 #### Kiren Srinivasan
 GitHub: https://github.com/srinitude
