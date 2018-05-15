@@ -1,6 +1,6 @@
 # SongBirdz
 
-Discover romance through your favorite songs and musical interests
+Listen. Match. Connect. Or just listen.
 
 ![](/app/assets/images/8_confirmed_match.png "Confirmed Match")
 
