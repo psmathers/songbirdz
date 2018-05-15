@@ -1,22 +1,22 @@
-#SongBirdz
+# SongBirdz
 
 Discover romance through your favorite songs and musical interests
 
 ![](/app/assets/images/8_confirmed_match.png "Confirmed Match")
 
-####Built with:
+#### Built with:
 Spotify API, ReactJS, Rails, OmniAuth
 
-##Team Members
+## Team Members
 
-####Parker Smathers
+#### Parker Smathers
 https://github.com/psmathers
 
-####Terrence Stone
+#### Terrence Stone
 https://github.com/terencestone
 
-####Kiren Srinivasan
+#### Kiren Srinivasan
 GitHub: https://github.com/srinitude
 
-####Richard Ito
+#### Richard Ito
 GitHub: https://github.com/ricito4
