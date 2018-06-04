@@ -1,6 +1,6 @@
 # SongBirdz
 
-Listen. Match. Connect. Or just listen.
+Listen. Match. Connect. Listen.
 
 ![](/app/assets/images/8_confirmed_match.png "Confirmed Match")
 
